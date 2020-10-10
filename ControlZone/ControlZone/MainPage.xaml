@@ -4,39 +4,15 @@
              x:Class="ControlZone.MainPage">
 
 
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-        </Grid.RowDefinitions>
+    <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto">
         <Frame Grid.Row="0" HeightRequest="180" BackgroundColor="#fc8059" 
                HasShadow="True" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="0">
-            <Grid Margin="0" Padding="0">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.1*"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="0.75*"/>
-                </Grid.RowDefinitions>
+            <Grid Margin="0" Padding="0" RowDefinitions="0.1*, Auto, 0.75*">
                 <BoxView Grid.Row="0" BackgroundColor="Transparent" HeightRequest="20" Margin="0"/>
                 <Image Grid.RowSpan="3" Source="SmartZone2.png" Aspect="AspectFill" Margin="0"/>
-                <Grid Grid.Row="1" BackgroundColor="Transparent" Margin="20">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.6*"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
-                    <Grid Grid.Column="0">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto"/>
-                            <RowDefinition Height="Auto"/>
-                        </Grid.RowDefinitions>
-                        <Grid Grid.Row="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
+                <Grid Grid.Row="1" BackgroundColor="Transparent" Margin="20" ColumnDefinitions="0.6*, Auto">
+                    <Grid Grid.Column="0" RowDefinitions="Auto, Auto">
+                        <Grid Grid.Row="0" ColumnDefinitions="Auto, Auto">
                             <Label Grid.Column="0" Text="Hello" TextColor="White" FontSize="25" FontAttributes="Bold"/>
                             <Label Grid.Column="1" Text="Long," TextColor="White" FontSize="25" FontAttributes="Bold"/>
                         </Grid>
@@ -49,17 +25,8 @@
             </Grid>
         </Frame>
         <materialframe:MaterialFrame MaterialBlurStyle="ExtraLight" MaterialTheme="Acrylic" Grid.Row="1" HeightRequest="110" BackgroundColor="White" HasShadow="True" Margin="30,-55,30,0">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-                <Grid Grid.Row="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="Auto"/>
-                    </Grid.ColumnDefinitions>
+            <Grid RowDefinitions="Auto, Auto, Auto">
+                <Grid Grid.Row="0" ColumnDefinitions="Auto, Auto">
                     <StackLayout Grid.Column="0" Orientation="Vertical">
                         <Label Text="22 September 2020" TextColor="#576a90" FontSize="10" FontAttributes="None"/>
                         <Label Text="Thursday" TextColor="#576a90" FontSize="16" FontAttributes="Bold"/>
@@ -67,12 +34,7 @@
                     <Image Grid.Column="1"/>
                 </Grid>
                 <BoxView Grid.Row="1" BackgroundColor="#eaf3ff" HeightRequest="2" Margin="0"/>
-                <Grid Grid.Row="2">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.3*"/>
-                        <ColumnDefinition Width="0.4*"/>
-                        <ColumnDefinition Width="0.3*"/>
-                    </Grid.ColumnDefinitions>
+                <Grid Grid.Row="2" ColumnDefinitions="0.3*, 0.4*, 0.3*">
                     <StackLayout Grid.Column="0" Orientation="Vertical" Padding="0">
                         <Label Text="67" FontSize="20" TextColor="#fc794f" FontAttributes="Bold" HorizontalOptions="Center" Margin="0"/>
                         <Label Text="Total Guest" TextColor="#576a90" FontSize="10" FontAttributes="None" HorizontalTextAlignment="Center" Margin="0"/>
@@ -97,11 +59,7 @@
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
                         <materialframe:MaterialFrame MaterialBlurStyle="ExtraLight" MaterialTheme="Acrylic" WidthRequest="150" HasShadow="True" AcrylicGlowColor="#fc794f" Margin="0" Padding="10">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="0.2*"/>
-                                    <ColumnDefinition Width="0.6*"/>
-                                </Grid.ColumnDefinitions>
+                            <Grid ColumnDefinitions="0.2*, 0.6*">
                                 <Button Grid.ColumnSpan="2" Margin="0" BackgroundColor="Transparent"/>
                                 <Label Grid.Column="1" Text="{x:Binding roomName}" FontSize="13" TextColor="{Binding fontColor}" FontAttributes="Bold" 
                                        HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
@@ -118,15 +76,11 @@
             <Label Text="Device" FontSize="15" FontAttributes="Bold" TextColor="#50648c" VerticalOptions="Center" Margin="0"/>
         </StackLayout>
         <FlexLayout Grid.Row="4" Direction="Row" Wrap="Reverse" Margin="25,10,25,0" WidthRequest="40" BindableLayout.ItemsSource="{Binding Tools}" VerticalOptions="FillAndExpand" Padding="0" 
-                        HeightRequest="250" BackgroundColor="Transparent">
+                    HeightRequest="250" BackgroundColor="Transparent">
             <BindableLayout.ItemTemplate>
                 <DataTemplate>
                     <materialframe:MaterialFrame MaterialBlurStyle="ExtraLight" MaterialTheme="Acrylic" FlexLayout.Grow="1" Margin="5" HeightRequest="80" HasShadow="True" Padding="0">
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto"/>
-                                <ColumnDefinition Width="Auto"/>
-                            </Grid.ColumnDefinitions>
+                        <Grid ColumnDefinitions="Auto, Auto">
                             <Button Grid.ColumnSpan="3" Margin="0" BackgroundColor="Transparent"/>
                             <ImageButton Grid.Column="0" Source="{Binding image}" HeightRequest="30" WidthRequest="30" Margin="30,0,0,0" BackgroundColor="Transparent"/>
                             <Label Grid.Column="1"  Text="{Binding toolName}" TextColor="#50648c" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
