@@ -1,6 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:materialframe="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" NavigationPage.HasNavigationBar="False" 
+             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+             xmlns:materialframe="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
              x:Class="ControlZone.MainPage">
 
 
@@ -81,9 +83,10 @@
                 <DataTemplate>
                     <materialframe:MaterialFrame MaterialBlurStyle="ExtraLight" MaterialTheme="Acrylic" FlexLayout.Grow="1" Margin="5" HeightRequest="80" HasShadow="True" Padding="0">
                         <Grid ColumnDefinitions="Auto, Auto">
-                            <Button Grid.ColumnSpan="3" Margin="0" BackgroundColor="Transparent"/>
-                            <ImageButton Grid.Column="0" Source="{Binding image}" HeightRequest="30" WidthRequest="30" Margin="30,0,0,0" BackgroundColor="Transparent"/>
+                            <Image Grid.Column="0" Source="{Binding image}" HeightRequest="30" WidthRequest="30" Margin="30,0,0,0" BackgroundColor="Transparent"
+                                   sharedTransitions:Transition.Name="shareitemTransistion" sharedTransitions:Transition.Group="{x:Binding image}"/>
                             <Label Grid.Column="1"  Text="{Binding toolName}" TextColor="#50648c" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                            <Button Grid.ColumnSpan="3" Margin="0" BackgroundColor="Transparent" Clicked="CommandButtonClick" CommandParameter="{Binding .}"/>
                         </Grid>
                     </materialframe:MaterialFrame>
                 </DataTemplate>
