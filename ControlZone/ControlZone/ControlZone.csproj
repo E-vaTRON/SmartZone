@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -11,14 +11,24 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Views\**" />
-    <EmbeddedResource Remove="Views\**" />
-    <None Remove="Views\**" />
+    <PackageReference Include="Sharpnado.MaterialFrame" Version="1.1.3" />
+    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1534" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.0-pre2" />
+    <PackageReference Include="Xamarin.Plugin.SharedTransitions" Version="2.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Sharpnado.MaterialFrame" Version="1.1.3" />
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1534" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <EmbeddedResource Update="Components\DeviceViewCell\DeviceViewCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceDetail.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\DeviceList.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

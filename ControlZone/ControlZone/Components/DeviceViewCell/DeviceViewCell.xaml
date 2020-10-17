@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="ControlZone.Components.DeviceViewCell.DeviceViewCell">
+  <ContentView.Content>
+        <StackLayout>
+            <ff:CachedImage Source="{x:Binding DeviceImageUrlString}" 
+                            WidthRequest="40" HeightRequest="40" LoadingPlaceholder="Loading"
+                            HorizontalOptions="Center"/>
+            <Label HorizontalOptions="Center"/>
+            <Switch/>
+            <ProgressBar Progress="0.5" />
+        </StackLayout>
+  </ContentView.Content>
+</ContentView>
