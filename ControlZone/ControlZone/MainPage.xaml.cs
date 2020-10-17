@@ -1,5 +1,5 @@
 ﻿using ControlZone.ViewModels.ViewModelPages;
-using ControlZone.Views;
+using ControlZone.Views.DeviceViews;
 using Plugin.SharedTransitions;
 using Xamarin.Forms;
 
@@ -12,9 +12,28 @@ namespace ControlZone
             InitializeComponent();
             BindingContext = new ViewModelMainPage();
         }
-        private async void DeviceList_Click(object sender, System.EventArgs e)
+        private async void CommandButtonClick(object sender, System.EventArgs e)
         {
-            await Navigation.PushAsync(new DeviceList());
+            var selectedCommand = (Tool)((Button)sender).CommandParameter;
+            SharedTransitionNavigationPage.SetTransitionSelectedGroup(this, selectedCommand.image.ToString());
+            switch (selectedCommand.image)
+            {
+                case "UtilitiesO":
+                    await Navigation.PushAsync(new DeviceList());
+                    break;
+
+                case "JobO":
+                    await Navigation.PushAsync(new TaskList());
+                    break;
+
+                case "FoodO":
+                    await Navigation.PushAsync(new MenuList());
+                    break;
+
+                case "UserO":
+                    await Navigation.PushAsync(new EmployeeList());
+                    break;
+            }
         }
     }
 }

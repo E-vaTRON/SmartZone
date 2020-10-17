@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace ControlZone.Views
+namespace ControlZone.Views.DeviceViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DeviceDetail : ContentPage
+    public partial class MenuList : ContentPage
     {
-        public DeviceDetail()
+        public MenuList()
         {
             InitializeComponent();
         }
