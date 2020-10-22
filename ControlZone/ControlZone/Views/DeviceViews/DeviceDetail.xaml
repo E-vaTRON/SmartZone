@@ -1,10 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions" 
              x:Class="ControlZone.Views.DeviceViews.DeviceDetail">
     <ContentPage.Content>
         <Grid>
-            
+            <Image x:Name="DeviceLogo" Source="UtilitiesO" BackgroundColor="Transparent"
+                         sharedTransitions:Transition.Name="shareitemTransistion"
+                         sharedTransitions:Transition.Group="{x:Binding Id}" Margin="5"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
