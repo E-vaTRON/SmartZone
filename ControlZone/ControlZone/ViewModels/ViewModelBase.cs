@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
@@ -37,6 +38,7 @@ namespace ControlZone.ViewModels
         public ICommand IncreamentLoadCommand { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        public event EventHandler CanExecuteChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
