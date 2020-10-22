@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControlZone.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,19 @@ namespace ControlZone.Views.DeviceViews
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DeviceDetail : ContentPage
     {
-        public DeviceDetail()
+        private DeviceBase Device;
+        public DeviceDetail(DeviceBase device)
         {
             InitializeComponent();
+            Device = device;
+        }
+        protected override async void OnAppearing()
+        {
+            await ViewInitialize(Device);
+        }
+        private async Task ViewInitialize(DeviceBase device)
+        {
+            DeviceLogo.Source = device.IconImageSource;
         }
     }
 }

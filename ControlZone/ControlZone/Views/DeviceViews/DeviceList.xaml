@@ -2,15 +2,50 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" NavigationPage.HasBackButton="False"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" Visual="Material" NavigationPage.HasNavigationBar="False"
              xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions" 
-             xmlns:customcontrols="clr-namespace:ControlZone.Components.DeviceViewCell"
+             xmlns:data="clr-namespace:ControlZone.Model" xmlns:materialframe="http://sharpnado.com"
              x:Class="ControlZone.Views.DeviceViews.DeviceList">
     <ContentPage.Content>
-        <StackLayout>
-            <ImageButton x:Name="LogoButton" Source="UtilitiesO" BackgroundColor="Transparent"
+        <Grid RowDefinitions="50,*">
+            <Grid>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center">
+                    <ImageButton x:Name="LogoButton" Source="UtilitiesO" BackgroundColor="Transparent"
                          sharedTransitions:Transition.Name="shareitemTransistion"
-                         sharedTransitions:Transition.Group="{x:Binding image}"
-                         WidthRequest="40" HeightRequest="40"/>
-            <customcontrols:DeviceViewCell/>
-        </StackLayout>
+                         sharedTransitions:Transition.Group="{x:Binding image}" Margin="5"/>
+                    <Label Text="Có 4 thiết bị được kết nối" VerticalOptions="Center" TextColor="#fc8059" FontAttributes="Bold"/>
+                </StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center">
+                    <Button Text="THÊM" Background="#fc8059" Margin="5"/>
+                </StackLayout>
+            </Grid>
+            <RefreshView Grid.Row="1">
+                <CollectionView x:Name="SubjectRequestList" BackgroundColor="Transparent" SelectionMode="None"
+                                VerticalOptions="Start" ItemsSource="{x:Binding Devices, Mode=TwoWay}" Margin="10">
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Span="2" HorizontalItemSpacing="10" VerticalItemSpacing="10" Orientation="Vertical"/>
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="data:DeviceBase" >
+                            <materialframe:MaterialFrame MaterialBlurStyle="ExtraLight" MaterialTheme="Acrylic" Padding="0"
+                                     HeightRequest="220" HasShadow="True" AcrylicGlowColor="#fc794f">
+                                <StackLayout Padding="10">
+                                    <ImageButton x:Name="DeviceLogo" Source="{x:Binding IconImageSource}" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" 
+                                                 BackgroundColor="Transparent" Clicked="DeviceLogo_Clicked" CommandParameter="{x:Binding .}"
+                                                 sharedTransitions:Transition.Name="shareitemTransistion" sharedTransitions:Transition.Group="{x:Binding Id}"/>
+                                    <Label Text="{x:Binding Model}" FontAttributes="Bold" FontSize="Default" HorizontalOptions="Center"/>
+                                    <Label x:Name="DeviceType" Text="{x:Binding DeviceType, Converter={StaticResource DeviceTypeConverter}}" 
+                                           FontSize="Small" HorizontalOptions="Center"/>
+                                    <Grid HorizontalOptions="FillAndExpand">
+                                        <Switch IsToggled="{x:Binding PowerStatus, Mode=TwoWay}" HorizontalOptions="Start"/>
+                                        <Label Text="{x:Binding OverallProcess,Converter={StaticResource DeviceTypeProcessConverter},ConverterParameter={x:Reference DeviceType}}" 
+                                               FontSize="Small" HorizontalOptions="End" VerticalOptions="Center"/>
+                                    </Grid>
+                                    <ProgressBar Progress="{x:Binding OverallProcess, Mode=TwoWay}" ProgressColor="#fc8059"/>
+                                </StackLayout>
+                            </materialframe:MaterialFrame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </RefreshView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

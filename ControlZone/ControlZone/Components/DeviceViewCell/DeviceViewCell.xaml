@@ -1,16 +1,20 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:materialframe="http://sharpnado.com"
              x:Class="ControlZone.Components.DeviceViewCell.DeviceViewCell">
-  <ContentView.Content>
-        <StackLayout>
-            <ff:CachedImage Source="{x:Binding DeviceImageUrlString}" 
-                            WidthRequest="40" HeightRequest="40" LoadingPlaceholder="Loading"
-                            HorizontalOptions="Center"/>
-            <Label HorizontalOptions="Center"/>
-            <Switch/>
-            <ProgressBar Progress="0.5" />
-        </StackLayout>
-  </ContentView.Content>
+    <ContentView.Content>
+        <materialframe:MaterialFrame MaterialBlurStyle="ExtraLight" MaterialTheme="Acrylic" Padding="0"
+                                     HeightRequest="205" HasShadow="True" AcrylicGlowColor="#fc794f" Margin="5">
+            <StackLayout Padding="10">
+                <ImageButton Source="{x:Binding IconImageSource}" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" BackgroundColor="Transparent"/>
+                <Label Text="{x:Binding Model}" FontAttributes="Bold" HorizontalOptions="Center"/>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Switch IsToggled="{x:Binding PowerStatus, Mode=TwoWay}" HorizontalOptions="Start"/>
+                    <Label Text="{x:Binding Percentage}" HorizontalOptions="End" VerticalOptions="Center"/>
+                </Grid>
+                <ProgressBar Progress="{x:Binding Percentage, Mode=TwoWay}" ProgressColor="#fc8059"/>
+            </StackLayout>
+        </materialframe:MaterialFrame>
+    </ContentView.Content>
 </ContentView>
