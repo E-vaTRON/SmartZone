@@ -7,11 +7,19 @@
 
 
     <Grid RowDefinitions="Auto, Auto, Auto, Auto, Auto">
-        <Frame Grid.Row="0" HeightRequest="180" BackgroundColor="#fc8059" 
-               HasShadow="True" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="0">
+        <Frame Grid.Row="0" HeightRequest="180" HasShadow="True" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="0">
             <Grid Margin="0" Padding="0" RowDefinitions="0.1*, Auto, 0.75*">
+                <BoxView x:Name="bdGradient" Grid.Row="0" Scale="4" Grid.RowSpan="3" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Margin="0">
+                    <BoxView.Background>
+                        <LinearGradientBrush>
+                            <GradientStop Color="LightBlue" Offset="1.0" />
+                            <GradientStop Color="#fc794f" Offset="0.3" />
+                            <GradientStop Color="#f8c500" Offset="0.5" />
+                            <GradientStop Color="Orange" Offset="0.7" />
+                        </LinearGradientBrush>
+                    </BoxView.Background>
+                </BoxView>
                 <BoxView Grid.Row="0" BackgroundColor="Transparent" HeightRequest="20" Margin="0"/>
-                <Image Grid.RowSpan="3" Source="SmartZone2.png" Aspect="AspectFill" Margin="0"/>
                 <Grid Grid.Row="1" BackgroundColor="Transparent" Margin="20" ColumnDefinitions="0.6*, Auto">
                     <Grid Grid.Column="0" RowDefinitions="Auto, Auto">
                         <Grid Grid.Row="0" ColumnDefinitions="Auto, Auto">

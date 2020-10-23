@@ -45,7 +45,7 @@ namespace ControlZone.Components.DeviceViewCell
             }
         }
 
-        public static BindableProperty PercentageProperty = BindableProperty.Create("Percentage", typeof(double), typeof(DeviceViewCell), 0.0, BindingMode.TwoWay);
+        public static BindableProperty PercentageProperty = BindableProperty.Create("Percentage", typeof(double), typeof(DeviceViewCell), 0d, BindingMode.TwoWay);
 
         public double Percentage
         {

@@ -20,6 +20,9 @@ namespace ControlZone.Common.Converter
                 case 1:
                     deviceType = "Thùng rác";
                     break;
+                case 2:
+                    deviceType = "Đèn";
+                    break;
             }
             return deviceType;
         }
