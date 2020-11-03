@@ -1,20 +1,30 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:materialframe="http://sharpnado.com"
+             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions" 
+             xmlns:materialframe="http://sharpnado.com" x:Name="DeviceCell"
              x:Class="ControlZone.Components.DeviceViewCell.DeviceViewCell">
     <ContentView.Content>
-        <materialframe:MaterialFrame MaterialBlurStyle="ExtraLight" MaterialTheme="Acrylic" Padding="0"
-                                     HeightRequest="205" HasShadow="True" AcrylicGlowColor="#fc794f" Margin="5">
-            <StackLayout Padding="10">
-                <ImageButton Source="{x:Binding IconImageSource}" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" BackgroundColor="Transparent"/>
-                <Label Text="{x:Binding Model}" FontAttributes="Bold" HorizontalOptions="Center"/>
-                <Grid HorizontalOptions="FillAndExpand">
-                    <Switch IsToggled="{x:Binding PowerStatus, Mode=TwoWay}" HorizontalOptions="Start"/>
-                    <Label Text="{x:Binding Percentage}" HorizontalOptions="End" VerticalOptions="Center"/>
-                </Grid>
-                <ProgressBar Progress="{x:Binding Percentage, Mode=TwoWay}" ProgressColor="#fc8059"/>
-            </StackLayout>
-        </materialframe:MaterialFrame>
+        <StackLayout>
+            <materialframe:MaterialFrame MaterialTheme="Acrylic" Padding="0" Margin="5"
+                                     HeightRequest="220" HasShadow="True" AcrylicGlowColor="{x:Binding DeviceColor}">
+                <StackLayout Padding="5,15,5,5">
+                    <ImageButton x:Name="DeviceLogo" Source="{x:Binding IconImageSource}" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" 
+                                 BackgroundColor="Transparent" CommandParameter="{x:Binding .}" Clicked="DeviceLogo_Clicked"
+                                 sharedTransitions:Transition.Name="shareitemTransistion" sharedTransitions:Transition.Group="{x:Binding DeviceId}"/>
+                    <Label Text="{x:Binding Model}" FontAttributes="Bold"  FontSize="Default" HorizontalOptions="Center" TextColor="{x:Binding DeviceColor}"/>
+                    <Label x:Name="DeviceTypeLabel" Text="{x:Binding DeviceType, Converter={StaticResource DeviceTypeConverter}}" 
+                               FontSize="Small" HorizontalOptions="Center" />
+                    <Grid HorizontalOptions="FillAndExpand">
+                        <Label Text="{x:Binding OverallProcess,
+                            Converter={StaticResource DeviceTypeProcessConverter},ConverterParameter={x:Reference DeviceTypeLabel},
+                            Source={x:Reference DeviceCell}}"
+                                   FontSize="12" HorizontalOptions="Start" VerticalOptions="Center" />
+                        <Switch IsToggled="{x:Binding PowerStatus, Mode=TwoWay}" OnColor="{x:Binding Color}" HorizontalOptions="End" VerticalOptions="Center"/>
+                    </Grid>
+                    <ProgressBar Progress="{x:Binding Percentage, Source={x:Reference DeviceCell}}" ProgressColor="{x:Binding DeviceColor}"/>
+                </StackLayout>
+            </materialframe:MaterialFrame>
+        </StackLayout>
     </ContentView.Content>
 </ContentView>

@@ -1,4 +1,7 @@
-﻿using System;
+﻿using ControlZone.Model;
+using ControlZone.Views.DeviceViews;
+using Plugin.SharedTransitions;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -16,36 +19,54 @@ namespace ControlZone.Components.DeviceViewCell
         public DeviceViewCell()
         {
             InitializeComponent();
-            //AnimatedText(Percentage);
+        }
+        public static readonly BindableProperty DeviceIdProperty = BindableProperty.Create(nameof(DeviceId), typeof(int), typeof(DeviceViewCell), default(int));
+
+        public int DeviceId
+        {
+            get { return (int)GetValue(DeviceIdProperty); }
+            set { SetValue(DeviceIdProperty, value); }
         }
         public static readonly BindableProperty IconImageSourceProperty = BindableProperty.Create(nameof(IconImageSource), typeof(string), typeof(DeviceViewCell), default(string));
 
         public string IconImageSource
         {
-            get
-            {
-                return (string)GetValue(IconImageSourceProperty);
-            }
-            set
-            {
-                SetValue(IconImageSourceProperty, value);
-            }
+            get { return (string)GetValue(IconImageSourceProperty); }
+            set { SetValue(IconImageSourceProperty, value); }
         }
         public static readonly BindableProperty ModelProperty = BindableProperty.Create(nameof(Model), typeof(string), typeof(DeviceViewCell), default(string));
 
         public string Model
         {
-            get
-            {
-                return (string)GetValue(ModelProperty);
-            }
-            set
-            {
-                SetValue(ModelProperty, value);
-            }
+            get { return (string)GetValue(ModelProperty); }
+            set { SetValue(ModelProperty, value); }
         }
 
-        public static BindableProperty PercentageProperty = BindableProperty.Create("Percentage", typeof(double), typeof(DeviceViewCell), 0d, BindingMode.TwoWay);
+        public static readonly BindableProperty DeviceColorProperty = BindableProperty.Create(nameof(DeviceColor), typeof(string), typeof(DeviceViewCell), default(string));
+
+        public string DeviceColor
+        {
+            get { return (string)GetValue(DeviceColorProperty); }
+            set { SetValue(DeviceColorProperty, value); }
+        }
+
+        public static readonly BindableProperty DeviceTypeProperty = BindableProperty.Create(nameof(DeviceType), typeof(string), typeof(DeviceViewCell), default(string));
+
+        public string DeviceType
+        {
+            get { return (string)GetValue(DeviceTypeProperty); }
+            set { SetValue(DeviceTypeProperty, value); }
+        }
+
+        public static readonly BindableProperty OverallProcessProperty = BindableProperty.Create(nameof(OverallProcess), typeof(float), typeof(DeviceViewCell), default(float));
+
+        public float OverallProcess
+        {
+            get { return (float)GetValue(OverallProcessProperty); }
+            set { SetValue(OverallProcessProperty, value); }
+        }
+
+        public static readonly BindableProperty PercentageProperty = BindableProperty.Create("Percentage", typeof(double), typeof(DeviceViewCell), 0d, BindingMode.TwoWay);
 
         public double Percentage
         {
@@ -56,35 +77,15 @@ namespace ControlZone.Components.DeviceViewCell
 
         public bool PowerStatus
         {
-            get
-            {
-                return (bool)GetValue(PowerStatusProperty);
-            }
-            set
-            {
-                SetValue(PowerStatusProperty, value);
-            }
+            get { return (bool)GetValue(PowerStatusProperty); }
+            set { SetValue(PowerStatusProperty, value); }
         }
 
-        //private void AnimatedText(float amount)
-        //{
-        //    var stopwatch = new Stopwatch();
-        //    stopwatch.Start();
+        public event EventHandler<EventArgs> DeviceClick;
 
-        //    Device.StartTimer(TimeSpan.FromSeconds(1 / 100f), () =>
-        //    {
-        //        double t = stopwatch.Elapsed.TotalMilliseconds % 500 / 500;
-
-        //        Percentage = Math.Min((float)amount, (float)(10 * t) + Percentage);
-
-        //        if (Percentage >= (float)amount)
-        //        {
-        //            stopwatch.Stop();
-        //            return false;
-        //        }
-
-        //        return true;
-        //    });
-        //}
+        private void DeviceLogo_Clicked(object sender, EventArgs e)
+        {
+            DeviceClick?.Invoke(this, e);
+        }
     }
 }
