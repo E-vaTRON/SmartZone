@@ -14,10 +14,12 @@ namespace ControlZone.Views.DeviceViews
     public partial class DeviceDetail : ContentPage
     {
         private DeviceBase Device;
+        private NavigationPage navigationPage;
         public DeviceDetail(DeviceBase device)
         {
             InitializeComponent();
             Device = device;
+            navigationPage = Application.Current.MainPage as NavigationPage;
         }
         protected override async void OnAppearing()
         {
@@ -26,6 +28,10 @@ namespace ControlZone.Views.DeviceViews
         private async Task ViewInitialize(DeviceBase device)
         {
             DeviceLogo.Source = device.IconImageSource;
+            ProgressRingDevice.RingProgressColor = Color.FromHex(device.Color);
+            navigationPage.BarBackgroundColor = Color.FromHex(device.Color);
+            PowerStatusSwitch.IsToggled = device.PowerStatus;
+            ProgressRingDevice.AnimatedProgress = device.OverallProcess;
         }
     }
 }

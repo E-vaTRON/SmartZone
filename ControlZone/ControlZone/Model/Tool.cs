@@ -7,6 +7,7 @@ namespace ControlZone
 {
     public class Tool
     {
+        public int Id { get; set; }
         public Color color { get; set; }
         public string toolName { get; set; }
         public string image { get; set; }

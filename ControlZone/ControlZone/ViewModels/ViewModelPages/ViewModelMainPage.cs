@@ -51,11 +51,11 @@ namespace ControlZone.ViewModels.ViewModelPages
         {
             return new ObservableCollection<Tool>
             {
-                new Tool { toolName="Thực đơn", color = Color.Green, image = "FoodO"},
-                new Tool { toolName="Nhân viên", color = Color.Blue, image = "UserO" },
-                new Tool { toolName="Vật dụng", color = Color.Orange, image = "UtilitiesO"},
-                new Tool { toolName="Công Việc", color = Color.Gray, image = "JobO"},
-                new Tool { toolName="Đơn hàng", color = Color.Yellow, image = "PaperO"}
+                new Tool { Id = 1, toolName="Thực Đơn", color = Color.Green, image = "FoodO"},
+                new Tool { Id = 2, toolName="Nhân Viên", color = Color.Blue, image = "Employee" },
+                new Tool { Id = 3, toolName="Thiết Bị", color = Color.Orange, image = "Devices"},
+                new Tool { Id = 4, toolName="Công Việc", color = Color.Gray, image = "JobO"},
+                new Tool { Id = 5, toolName="Đơn Hàng", color = Color.Yellow, image = "PaperO"}
             };
         }
         private ObservableCollection<Room> GetRooms()

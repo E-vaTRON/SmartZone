@@ -7,6 +7,9 @@
         <ResourceDictionary>
             <converters:DeviceTypeConverter x:Key="DeviceTypeConverter"/>
             <converters:DeviceProcessTypeConverter x:Key="DeviceTypeProcessConverter"/>
+            <Style TargetType="Label">
+                <Setter Property="FontFamily" Value="Biome"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

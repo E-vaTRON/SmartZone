@@ -21,7 +21,7 @@ namespace ControlZone
             SharedTransitionNavigationPage.SetTransitionSelectedGroup(this, selectedCommand.image.ToString());
             switch (selectedCommand.image)
             {
-                case "UtilitiesO":
+                case "Devices":
                     await Navigation.PushAsync(new DeviceList());
                     break;
 
@@ -33,7 +33,7 @@ namespace ControlZone
                     await Navigation.PushAsync(new MenuList());
                     break;
 
-                case "UserO":
+                case "Employee":
                     await Navigation.PushAsync(new EmployeeList());
                     break;
             }

@@ -26,7 +26,7 @@
                             <Label Grid.Column="0" Text="Hello" TextColor="White" FontSize="25" FontAttributes="Bold"/>
                             <Label Grid.Column="1" Text="Long," TextColor="White" FontSize="25" FontAttributes="Bold"/>
                         </Grid>
-                        <Label Grid.Row="1" Text="Ready to manage your store!" TextColor="White" FontSize="17"/>
+                        <Label Grid.Row="1" Text="Ready to manage your store!" TextColor="White" FontSize="17" />
                     </Grid>
                     <Grid Grid.Column="1" HeightRequest="70" WidthRequest="70">
                         <ImageButton BackgroundColor="Gray" CornerRadius="35" Source="Me_Version2018.jpg"/>
@@ -91,9 +91,9 @@
                 <DataTemplate>
                     <materialframe:MaterialFrame MaterialBlurStyle="ExtraLight" MaterialTheme="Acrylic" FlexLayout.Grow="1" Margin="5" HeightRequest="80" HasShadow="True" Padding="0">
                         <Grid ColumnDefinitions="Auto, Auto">
-                            <Image Grid.Column="0" Source="{Binding image}" HeightRequest="30" WidthRequest="30" Margin="30,0,0,0" BackgroundColor="Transparent"
-                                   sharedTransitions:Transition.Name="shareitemTransistion" sharedTransitions:Transition.Group="{x:Binding image}"/>
-                            <Label Grid.Column="1"  Text="{Binding toolName}" TextColor="#50648c" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                            <Image Grid.Column="0" Source="{Binding image}" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Transparent"
+                                   sharedTransitions:Transition.Name="shareitemTransistion" sharedTransitions:Transition.Group="{x:Binding image}" Margin="10"/>
+                            <Label Grid.Column="1" Text="{Binding toolName}" TextColor="#50648c" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
                             <Button Grid.ColumnSpan="3" Margin="0" BackgroundColor="Transparent" Clicked="CommandButtonClick" CommandParameter="{Binding .}"/>
                         </Grid>
                     </materialframe:MaterialFrame>

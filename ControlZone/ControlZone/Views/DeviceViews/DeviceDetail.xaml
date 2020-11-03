@@ -1,13 +1,27 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" NavigationPage.HasNavigationBar="True"
+             xmlns:control="clr-namespace:ProgressRingControl.Forms.Plugin;assembly=ProgressRing.Forms.Plugin"
              xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions" 
              x:Class="ControlZone.Views.DeviceViews.DeviceDetail">
-    <ContentPage.Content>
+    <NavigationPage.TitleView>
         <Grid>
-            <Image x:Name="DeviceLogo" Source="UtilitiesO" BackgroundColor="Transparent"
+            <Label x:Name="DeviceTypeLabel" HorizontalOptions="CenterAndExpand" 
+               FontSize="25" FontAttributes="Bold"
+               Margin="0,0,65,0" Text="Thùng rác" TextColor="White"/>
+            <Switch x:Name="PowerStatusSwitch" OnColor="#add638" ThumbColor="#fc794f"
+                    HorizontalOptions="End" VerticalOptions="Center"/>
+        </Grid>
+    </NavigationPage.TitleView>
+    <ContentPage.Content>
+        <Grid RowDefinitions="300,*">
+            <Grid VerticalOptions="Start" HorizontalOptions="Center" Margin="15">
+                <control:ProgressRing x:Name="ProgressRingDevice" RingThickness="10" RingBaseColor="Gray" 
+                                  AnimationLength="2000"/>
+                <Image x:Name="DeviceLogo" Source="UtilitiesO" BackgroundColor="Transparent"
                          sharedTransitions:Transition.Name="shareitemTransistion"
-                         sharedTransitions:Transition.Group="{x:Binding Id}" Margin="5"/>
+                         sharedTransitions:Transition.Group="{x:Binding Id}" Margin="10"/>
+            </Grid>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
