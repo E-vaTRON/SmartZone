@@ -4,6 +4,7 @@ using ControlZone.ViewModels.ViewModelPages.ViewModelDeviceViews;
 using Plugin.SharedTransitions;
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,8 +16,14 @@ namespace ControlZone.Views.DeviceViews
         public DeviceList()
         {
             InitializeComponent();
+            Task.Run(AnimateBackground);
             BindingContext = new ViewModelDeviceList();
-            //ConnectToServerAsync();
+        }
+
+        protected override async void OnAppearing()
+        {
+            await AddDeivceButton.TranslateTo(100, 0, 0);
+            await AddDeivceButton.TranslateTo(0, 0, 500, Easing.SpringIn);
         }
 
         private async void DeviceLogo_Clicked(object sender, System.EventArgs e)
@@ -31,6 +38,21 @@ namespace ControlZone.Views.DeviceViews
             var SelectedDevice = (DeviceBase)((ImageButton)sender).CommandParameter;
             SharedTransitionNavigationPage.SetTransitionSelectedGroup(this, SelectedDevice.Id.ToString());
             Navigation.PushAsync(new DeviceDetail(SelectedDevice)).GetAwaiter().GetResult();
+        }
+
+        private async void AnimateBackground()
+        {
+            Action<double> forward = input => bdGradient.AnchorY = input;
+            Action<double> backward = input => bdGradient.AnchorY = input;
+
+
+            while (true)
+            {
+                bdGradient.Animate(name: "forward", callback: forward, start: 0, end: 1, length: 1000, easing: Easing.SinIn);
+                await Task.Delay(3000);
+                bdGradient.Animate(name: "backward", callback: backward, start: 1, end: 0, length: 1000, easing: Easing.SinIn);
+                await Task.Delay(3000);
+            }
         }
 
         //private async Task ConnectToServerAsync()

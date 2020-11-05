@@ -1,6 +1,7 @@
 ﻿using ControlZone.Model;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,9 +12,10 @@ using Xamarin.Forms.Xaml;
 namespace ControlZone.Views.DeviceViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DeviceDetail : ContentPage
+    public partial class DeviceDetail : ContentPage, INotifyPropertyChanged
     {
-        private DeviceBase Device;
+        private DeviceBase deviceprop;
+        public DeviceBase Device { get { return deviceprop;  } set { deviceprop = value; OnPropertyChanged(); } }
         private NavigationPage navigationPage;
         public DeviceDetail(DeviceBase device)
         {
@@ -27,11 +29,8 @@ namespace ControlZone.Views.DeviceViews
         }
         private async Task ViewInitialize(DeviceBase device)
         {
-            DeviceLogo.Source = device.IconImageSource;
-            ProgressRingDevice.RingProgressColor = Color.FromHex(device.Color);
             navigationPage.BarBackgroundColor = Color.FromHex(device.Color);
-            PowerStatusSwitch.IsToggled = device.PowerStatus;
-            ProgressRingDevice.AnimatedProgress = device.OverallProcess;
+            DeviceLogo.Source = device.IconImageSource;
         }
     }
 }

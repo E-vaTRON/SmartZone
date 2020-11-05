@@ -15,6 +15,11 @@ namespace ControlZone
             Task.Run(AnimateBackground);
             BindingContext = new ViewModelMainPage();
         }
+        protected override async void OnAppearing()
+        {
+            await GradientTop.TranslateTo(0, -100, 0);
+            await GradientTop.TranslateTo(0, 0, 500, Easing.SpringIn);
+        }
         private async void CommandButtonClick(object sender, System.EventArgs e)
         {
             var selectedCommand = (Tool)((Button)sender).CommandParameter;
@@ -30,7 +35,9 @@ namespace ControlZone
                     break;
 
                 case "FoodO":
-                    await Navigation.PushAsync(new MenuList());
+                    //await Navigation.PushAsync(new MenuList());
+                    await GradientTop.TranslateTo(0, -100, 500, Easing.BounceOut);
+                    await GradientTop.TranslateTo(0, 0, 500, Easing.BounceOut);
                     break;
 
                 case "Employee":
@@ -42,6 +49,7 @@ namespace ControlZone
         {
             Action<double> forward = input => bdGradient.AnchorY = input;
             Action<double> backward = input => bdGradient.AnchorY = input;
+
 
             while (true)
             {

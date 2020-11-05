@@ -14,7 +14,7 @@ namespace ControlZone
         public App()
         {
             InitializeComponent();
-            Device.SetFlags(new[] { "Brush_Experimental" });
+            Device.SetFlags(new[] { "Brush_Experimental", "Shapes_Experimental" });
             MainPage = new SharedTransitionNavigationPage(new MainPage());
         }
 

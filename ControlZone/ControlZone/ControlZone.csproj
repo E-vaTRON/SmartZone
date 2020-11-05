@@ -13,6 +13,7 @@
   <ItemGroup>
     <None Remove="Assets\Devices\Devices.png" />
     <None Remove="Assets\Employee.png" />
+    <None Remove="Assets\Plus.png" />
     <None Remove="CC1.png" />
     <None Remove="Light.png" />
     <None Remove="Resources\Fonts\Biome-W04-Bold.otf" />
@@ -48,6 +49,7 @@
     <SharedImage Include="Assets\Devices\Light.png" BaseSize="221,221" />
     <SharedImage Include="Assets\Devices\TC1.png" BaseSize="221,221" />
     <SharedImage Include="Assets\Employee.png" BaseSize="221,221" />
+    <SharedImage Include="Assets\Plus.png" BaseSize="221,221" />
   </ItemGroup>
 
   <ItemGroup>

@@ -7,20 +7,26 @@
              xmlns:CustomControl="clr-namespace:ControlZone.Components.DeviceViewCell"
              x:Class="ControlZone.Views.DeviceViews.DeviceList">
     <ContentPage.Content>
-        <Grid RowDefinitions="60,*">
-            <Grid>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Start" VerticalOptions="Center">
-                    <ImageButton x:Name="LogoButton" Source="Devices.png" BackgroundColor="Transparent"
-                         sharedTransitions:Transition.Name="shareitemTransistion"
-                         sharedTransitions:Transition.Group="{x:Binding toolName}" Margin="5"/>
-                    <Label Text="4 thiết bị được kết nối" VerticalOptions="Center"
-                            TextColor="Black"/>
-                </StackLayout>
-                <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center">
-                    <Button Text="THÊM" Background="#fc8059" Margin="5" />
-                </StackLayout>
-            </Grid>
-            <RefreshView Grid.Row="1">
+        <Grid RowDefinitions="55,*" BackgroundColor="#f8bc00">
+            <BoxView x:Name="bdGradient" Grid.Row="0" Scale="4" Grid.RowSpan="2" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Margin="0">
+                <BoxView.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#eea849" Offset="0.5" />
+                        <GradientStop Color="#ffdb8d" Offset="0.7" />
+                    </LinearGradientBrush>
+                </BoxView.Background>
+            </BoxView>
+            <materialframe:MaterialFrame x:Name="TopBar" MaterialTheme="AcrylicBlur" MaterialBlurStyle="ExtraLight" Padding="0"
+                                         HasShadow="True">
+                <Grid>
+                    <ImageButton x:Name="LogoButton" Source="Devices.png" BackgroundColor="Transparent" WidthRequest="50" HeightRequest="50"
+                         sharedTransitions:Transition.Name="shareitemTransistion" VerticalOptions="Start" HorizontalOptions="Center" CornerRadius="30"
+                         sharedTransitions:Transition.Group="{x:Binding toolName}" Margin="0,5,0,5"/>
+                    <ImageButton x:Name="AddDeivceButton" HorizontalOptions="End" Source="Assets/Plus.png" WidthRequest="40" HeightRequest="40"
+                             BackgroundColor="Transparent" Margin="0,5,15,0"/>
+                </Grid>
+            </materialframe:MaterialFrame>
+            <RefreshView x:Name="DeviceRefreshView" Grid.Row="1">
                 <CollectionView x:Name="DeviceCollectionView" BackgroundColor="Transparent" SelectionMode="None"
                                 VerticalOptions="Start" ItemsSource="{x:Binding Devices, Mode=TwoWay}">
                     <CollectionView.ItemsLayout>
@@ -28,8 +34,8 @@
                     </CollectionView.ItemsLayout>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="data:DeviceBase">
-                            <StackLayout Padding="5">
-                                <materialframe:MaterialFrame MaterialTheme="Acrylic" Padding="0"
+                            <Grid Padding="5">
+                                <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" Padding="0"
                                      HeightRequest="220" HasShadow="True" AcrylicGlowColor="{x:Binding Color}">
                                     <StackLayout Padding="5,15,5,5">
                                         <ImageButton x:Name="DeviceLogo" Source="{x:Binding IconImageSource}" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" 
@@ -46,7 +52,8 @@
                                         <ProgressBar Progress="{x:Binding OverallProcess, Mode=TwoWay}" ProgressColor="{x:Binding Color}"/>
                                     </StackLayout>
                                 </materialframe:MaterialFrame>
-                            </StackLayout>
+                                <BoxView BackgroundColor="{x:Binding Color}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="2"/>
+                            </Grid>
                             <!--<CustomControl:DeviceViewCell DeviceId="{x:Binding Id}" DeviceType="{x:Binding DeviceType}" DeviceColor="{x:Binding Color}"
                                                           IconImageSource="{x:Binding IconImageSource}" PowerStatus="{x:Binding PowerStatus}"
                                                           Percentage="{x:Binding OverallProcess}" OverallProcess="{x:Binding OverallProcess}"
