@@ -12,7 +12,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <Grid RowDefinitions="120,*" CompressedLayout.IsHeadless="True">
-            <BoxView x:Name="bdGradient" Grid.Row="0" Grid.RowSpan="2" Scale="4" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Margin="0">
+            <BoxView x:Name="bdGradient" Grid.Row="0" Grid.RowSpan="2" Scale="4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0">
                 <BoxView.Background>
                     <LinearGradientBrush>
                         <GradientStop Color="#eea849" Offset="0.5" />

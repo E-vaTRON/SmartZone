@@ -4,107 +4,109 @@
              xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
              xmlns:materialframe="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
              x:Class="ControlZone.MainPage">
-
-    <Grid RowDefinitions="180, Auto, Auto, Auto, Auto" CompressedLayout.IsHeadless="True">
-        <Frame Grid.Row="0" HeightRequest="180" HasShadow="True" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="0"
-               CompressedLayout.IsHeadless="True" Margin="0">
-            <Grid x:Name="GradientTop" Margin="0" Padding="0" RowDefinitions="0.2*, Auto, 0.75*">
-                <BoxView x:Name="bdGradient" Grid.Row="0" Scale="4" Grid.RowSpan="4" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Margin="0">
-                    <BoxView.Background>
-                        <LinearGradientBrush>
-                            <GradientStop Color="LightBlue" Offset="1.0" />
-                            <GradientStop Color="#fc794f" Offset="0.3" />
-                            <GradientStop Color="#f8c500" Offset="0.5" />
-                            <GradientStop Color="Orange" Offset="0.7" />
-                        </LinearGradientBrush>
-                    </BoxView.Background>
-                </BoxView>
-                <Grid Grid.Row="1" BackgroundColor="Transparent" Margin="20" ColumnDefinitions="0.6*, Auto">
-                    <Grid Grid.Column="0" RowDefinitions="Auto, Auto" CompressedLayout.IsHeadless="True">
-                        <Grid Grid.Row="0" ColumnDefinitions="Auto, Auto" CompressedLayout.IsHeadless="True">
-                            <Label Grid.Column="0" Text="Hello" TextColor="White" FontSize="25" FontAttributes="Bold"/>
-                            <Label Grid.Column="1" Text="Long," TextColor="White" FontSize="25" FontAttributes="Bold"/>
+    <ScrollView>
+        <Grid RowDefinitions="180, Auto, Auto, Auto, Auto" CompressedLayout.IsHeadless="True">
+            <Frame Grid.Row="0" HeightRequest="180" HasShadow="True" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Margin="0">
+                <Grid x:Name="GradientTop" Margin="0" Padding="0" RowDefinitions="0.2*, Auto, 0.75*">
+                    <BoxView x:Name="bdGradient" Grid.Row="0" Scale="3" Grid.RowSpan="3" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Margin="0">
+                        <BoxView.Background>
+                            <LinearGradientBrush>
+                                <GradientStop Color="LightBlue" Offset="1.0" />
+                                <GradientStop Color="#fc794f" Offset="0.3" />
+                                <GradientStop Color="#f8c500" Offset="0.5" />
+                                <GradientStop Color="Orange" Offset="0.7" />
+                            </LinearGradientBrush>
+                        </BoxView.Background>
+                    </BoxView>
+                    <Grid Grid.Row="1" BackgroundColor="Transparent" Margin="20" ColumnDefinitions="0.6*, Auto">
+                        <Grid Grid.Column="0" RowDefinitions="Auto, Auto" CompressedLayout.IsHeadless="True">
+                            <Grid Grid.Row="0" ColumnDefinitions="Auto, Auto" CompressedLayout.IsHeadless="True">
+                                <Label Grid.Column="0" Text="Hello" FontSize="25" FontAttributes="Bold"/>
+                                <Label Grid.Column="1" Text="Long," FontSize="25" FontAttributes="Bold"/>
+                            </Grid>
+                            <Label Grid.Row="1" Text="Ready to manage your store!" FontSize="17" />
                         </Grid>
-                        <Label Grid.Row="1" Text="Ready to manage your store!" TextColor="White" FontSize="17" />
+                        <ImageButton Grid.Column="1" HeightRequest="70" WidthRequest="70" BackgroundColor="Gray" CornerRadius="35" Source="Me_Version2018.jpg"/>
                     </Grid>
-                    <ImageButton Grid.Column="1" HeightRequest="70" WidthRequest="70" BackgroundColor="Gray" CornerRadius="35" Source="Me_Version2018.jpg"/>
                 </Grid>
-            </Grid>
-        </Frame>
-        <BoxView Grid.Row="1" Grid.RowSpan="6" VerticalOptions="FillAndExpand" BackgroundColor="White" Margin="0"/>
-        <materialframe:MaterialFrame MaterialBlurStyle="ExtraLight" MaterialTheme="AcrylicBlur"
+            </Frame>
+            <materialframe:MaterialFrame MaterialBlurStyle="ExtraLight" MaterialTheme="AcrylicBlur"
                                      Grid.Row="1" HeightRequest="110"
                                      HasShadow="True" Margin="30,-55,30,0">
-            <Grid RowDefinitions="Auto, Auto, Auto">
-                <Grid Grid.Row="0" ColumnDefinitions="Auto, Auto" CompressedLayout.IsHeadless="True">
-                    <StackLayout Grid.Column="0" Orientation="Vertical" CompressedLayout.IsHeadless="True">
-                        <Label Text="22 September 2020" TextColor="#576a90" FontSize="10" FontAttributes="None"/>
-                        <Label Text="Thursday" TextColor="#576a90" FontSize="16" FontAttributes="Bold"/>
-                    </StackLayout>
-                    <Image Grid.Column="1"/>
+                <Grid RowDefinitions="Auto, Auto, Auto">
+                    <Grid Grid.Row="0" ColumnDefinitions="Auto, Auto" CompressedLayout.IsHeadless="True">
+                        <StackLayout Grid.Column="0" Orientation="Vertical" CompressedLayout.IsHeadless="True">
+                            <Label Text="22 September 2020" TextColor="#576a90" FontSize="10" FontAttributes="None"/>
+                            <Label Text="Thursday" TextColor="#576a90" FontSize="16" FontAttributes="Bold"/>
+                        </StackLayout>
+                        <Image Grid.Column="1"/>
+                    </Grid>
+                    <BoxView Grid.Row="1" BackgroundColor="#fc794f" HeightRequest="2" Margin="0"/>
+                    <Grid Grid.Row="2" ColumnDefinitions="0.3*, 0.4*, 0.3*" CompressedLayout.IsHeadless="True">
+                        <StackLayout Grid.Column="0" Orientation="Vertical" Padding="0" CompressedLayout.IsHeadless="True">
+                            <Label Text="67" FontSize="20" TextColor="#fc794f" FontAttributes="Bold" HorizontalOptions="Center" Margin="0"/>
+                            <Label Text="Total Guest" TextColor="#576a90" FontSize="10" FontAttributes="None" HorizontalTextAlignment="Center" Margin="0"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="1" Orientation="Vertical" Padding="0" CompressedLayout.IsHeadless="True">
+                            <Label Text="67" FontSize="20" TextColor="#fc794f" FontAttributes="Bold" HorizontalOptions="Center" Margin="0"/>
+                            <Label Text="Total Guest" TextColor="#576a90" FontSize="10" FontAttributes="None" HorizontalTextAlignment="Center" Margin="0"/>
+                        </StackLayout>
+                        <StackLayout Grid.Column="2" Orientation="Vertical" Padding="0" CompressedLayout.IsHeadless="True">
+                            <Label Text="67" FontSize="20" TextColor="#fc794f" FontAttributes="Bold" HorizontalOptions="Center" Margin="0"/>
+                            <Label Text="Total Guest" TextColor="#576a90" FontSize="10" FontAttributes="None" HorizontalTextAlignment="Center" Margin="0"/>
+                        </StackLayout>
+                    </Grid>
                 </Grid>
-                <BoxView Grid.Row="1" BackgroundColor="#fc794f" HeightRequest="2" Margin="0"/>
-                <Grid Grid.Row="2" ColumnDefinitions="0.3*, 0.4*, 0.3*" CompressedLayout.IsHeadless="True">
-                    <StackLayout Grid.Column="0" Orientation="Vertical" Padding="0" CompressedLayout.IsHeadless="True">
-                        <Label Text="67" FontSize="20" TextColor="#fc794f" FontAttributes="Bold" HorizontalOptions="Center" Margin="0"/>
-                        <Label Text="Total Guest" TextColor="#576a90" FontSize="10" FontAttributes="None" HorizontalTextAlignment="Center" Margin="0"/>
-                    </StackLayout>
-                    <StackLayout Grid.Column="1" Orientation="Vertical" Padding="0" CompressedLayout.IsHeadless="True">
-                        <Label Text="67" FontSize="20" TextColor="#fc794f" FontAttributes="Bold" HorizontalOptions="Center" Margin="0"/>
-                        <Label Text="Total Guest" TextColor="#576a90" FontSize="10" FontAttributes="None" HorizontalTextAlignment="Center" Margin="0"/>
-                    </StackLayout>
-                    <StackLayout Grid.Column="2" Orientation="Vertical" Padding="0" CompressedLayout.IsHeadless="True">
-                        <Label Text="67" FontSize="20" TextColor="#fc794f" FontAttributes="Bold" HorizontalOptions="Center" Margin="0"/>
-                        <Label Text="Total Guest" TextColor="#576a90" FontSize="10" FontAttributes="None" HorizontalTextAlignment="Center" Margin="0"/>
-                    </StackLayout>
-                </Grid>
-            </Grid>
-        </materialframe:MaterialFrame>
-        <ScrollView Grid.Row="2" Grid.RowSpan="2" VerticalOptions="Start"
+            </materialframe:MaterialFrame>
+            <ScrollView Grid.Row="2" Grid.RowSpan="2" VerticalOptions="Start"
                     Orientation="Horizontal" Margin="0,10,0,0" 
                     VerticalScrollBarVisibility="Never" HorizontalScrollBarVisibility="Never" 
                     HeightRequest="80">
-            <StackLayout BindableLayout.ItemsSource="{Binding Rooms}" VerticalOptions="FillAndExpand" Padding="30,0,30,10" 
+                <StackLayout BindableLayout.ItemsSource="{Binding Rooms}" VerticalOptions="FillAndExpand" Padding="30,0,30,10" 
                          Orientation="Horizontal" CompressedLayout.IsHeadless="True">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate>
+                            <materialframe:MaterialFrame MaterialBlurStyle="ExtraLight" MaterialTheme="AcrylicBlur" WidthRequest="150" 
+                                                         HasShadow="True" AcrylicGlowColor="#fc794f" Margin="0" Padding="0">
+                                <Grid ColumnDefinitions="0.2*, 0.6*">
+                                    <Button Grid.ColumnSpan="2" Margin="5" BackgroundColor="Transparent"/>
+                                    <Label Grid.Column="1" Text="{x:Binding roomName}" FontSize="12" TextColor="{Binding fontColor}" FontAttributes="Bold" 
+                                       HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                    <Image Grid.Column="0" Source="{Binding roomIcon}" HeightRequest="30" WidthRequest="30"  
+                                       VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="5"/>
+                                    <BoxView Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand"
+                                         BackgroundColor="#fc794f" HeightRequest="2" Margin="0"/>
+                                </Grid>
+                            </materialframe:MaterialFrame>
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout Grid.Row="3" Orientation="Horizontal" HeightRequest="50" Margin="30,-10,0,0" Padding="0" CompressedLayout.IsHeadless="True">
+                <Image Source="Device.png" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Margin="0"/>
+                <Label Text="Device" FontSize="15" FontAttributes="Bold" TextColor="#50648c" VerticalOptions="Center" Margin="0"/>
+            </StackLayout>
+            <FlexLayout Grid.Row="4" Direction="Row" Wrap="Reverse" Margin="25,10,25,0" WidthRequest="40" BindableLayout.ItemsSource="{Binding Tools}" 
+                    VerticalOptions="FillAndExpand" Padding="0"
+                    HeightRequest="250" BackgroundColor="Transparent">
                 <BindableLayout.ItemTemplate>
                     <DataTemplate>
-                        <materialframe:MaterialFrame MaterialBlurStyle="Dark" MaterialTheme="Light" WidthRequest="150" 
-                                                     HasShadow="True" AcrylicGlowColor="#fc794f" Margin="0" Padding="0">
-                            <Grid ColumnDefinitions="0.2*, 0.6*">
-                                <Button Grid.ColumnSpan="2" Margin="5" BackgroundColor="Transparent"/>
-                                <Label Grid.Column="1" Text="{x:Binding roomName}" FontSize="12" TextColor="{Binding fontColor}" FontAttributes="Bold" 
-                                       HorizontalTextAlignment="Center" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="5"/>
-                                <Image Grid.Column="0" Source="{Binding roomIcon}" HeightRequest="30" WidthRequest="30"  
-                                       VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" Margin="5"/>
-                                <BoxView Grid.ColumnSpan="2" VerticalOptions="Start" HorizontalOptions="FillAndExpand"
+                        <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" MaterialBlurStyle="ExtraLight" AcrylicGlowColor="#fc794f"
+                                                     FlexLayout.Grow="1" Margin="5" HeightRequest="80" HasShadow="True" Padding="0">
+                            <Grid ColumnDefinitions="Auto, Auto">
+                                <Image Grid.Column="0" Source="{Binding image}" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Transparent"
+                                   sharedTransitions:Transition.Name="shareitemTransistion" sharedTransitions:Transition.Group="{x:Binding image}" Margin="10"/>
+                                <Label Grid.Column="1" Text="{Binding toolName}" TextColor="#50648c" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
+                                <Button Grid.ColumnSpan="3" Margin="0" BackgroundColor="Transparent" Clicked="CommandButtonClick" CommandParameter="{Binding .}"/>
+                                <BoxView Grid.ColumnSpan="3" VerticalOptions="End" HorizontalOptions="FillAndExpand"
                                          BackgroundColor="#fc794f" HeightRequest="2" Margin="0"/>
                             </Grid>
                         </materialframe:MaterialFrame>
                     </DataTemplate>
                 </BindableLayout.ItemTemplate>
-            </StackLayout>
-        </ScrollView>
-        <StackLayout Grid.Row="3" Orientation="Horizontal" HeightRequest="50" Margin="30,-10,0,0" Padding="0" CompressedLayout.IsHeadless="True">
-            <Image Source="Device.png" BackgroundColor="Transparent" HeightRequest="30" WidthRequest="30" Margin="0"/>
-            <Label Text="Device" FontSize="15" FontAttributes="Bold" TextColor="#50648c" VerticalOptions="Center" Margin="0"/>
-        </StackLayout>
-        <FlexLayout Grid.Row="4" Direction="Row" Wrap="Reverse" Margin="25,10,25,0" WidthRequest="40" BindableLayout.ItemsSource="{Binding Tools}" VerticalOptions="FillAndExpand" Padding="0" 
-                    HeightRequest="250" BackgroundColor="Transparent">
-            <BindableLayout.ItemTemplate>
-                <DataTemplate>
-                    <materialframe:MaterialFrame MaterialBlurStyle="ExtraLight" MaterialTheme="AcrylicBlur" 
-                                                 FlexLayout.Grow="1" Margin="5" HeightRequest="80" HasShadow="True" Padding="0">
-                        <Grid ColumnDefinitions="Auto, Auto">
-                            <Image Grid.Column="0" Source="{Binding image}" HeightRequest="50" WidthRequest="50" VerticalOptions="Center" HorizontalOptions="Center" BackgroundColor="Transparent"
-                                   sharedTransitions:Transition.Name="shareitemTransistion" sharedTransitions:Transition.Group="{x:Binding image}" Margin="10"/>
-                            <Label Grid.Column="1" Text="{Binding toolName}" TextColor="#50648c" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" FontAttributes="Bold"/>
-                            <Button Grid.ColumnSpan="3" Margin="0" BackgroundColor="Transparent" Clicked="CommandButtonClick" CommandParameter="{Binding .}"/>
-                        </Grid>
-                    </materialframe:MaterialFrame>
-                </DataTemplate>
-            </BindableLayout.ItemTemplate>
-        </FlexLayout>
-    </Grid>
+            </FlexLayout>
+        </Grid>
+    </ScrollView>
 
 
 </ContentPage>

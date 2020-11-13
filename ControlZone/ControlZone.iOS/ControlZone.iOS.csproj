@@ -148,4 +148,9 @@
   <ItemGroup>
     <BundleResource Include="Resources\Sand1.png" />
   </ItemGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties TriggeredFromHotReload="False" />
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

@@ -16,13 +16,14 @@ namespace ControlZone
             {
                 NavigationPage.SetHasNavigationBar(this, true);
             }
-            Task.Run(AnimateBackground);
+            else if(Device.RuntimePlatform == Device.Android)
+            {
+                Task.Run(AnimateBackground);
+            }
             BindingContext = new ViewModelMainPage();
         }
         protected override async void OnAppearing()
         {
-            await GradientTop.TranslateTo(0, -100, 0);
-            await GradientTop.TranslateTo(0, 0, 500, Easing.SpringIn);
         }
         private async void CommandButtonClick(object sender, System.EventArgs e)
         {
@@ -40,8 +41,6 @@ namespace ControlZone
 
                 case "FoodO":
                     //await Navigation.PushAsync(new MenuList());
-                    await GradientTop.TranslateTo(0, -100, 500, Easing.BounceOut);
-                    await GradientTop.TranslateTo(0, 0, 500, Easing.BounceOut);
                     break;
 
                 case "Employee":
