@@ -12,6 +12,10 @@ namespace ControlZone
         public MainPage()
         {
             InitializeComponent();
+            if (Device.RuntimePlatform == Device.iOS)
+            {
+                NavigationPage.SetHasNavigationBar(this, true);
+            }
             Task.Run(AnimateBackground);
             BindingContext = new ViewModelMainPage();
         }
