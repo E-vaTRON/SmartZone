@@ -2,62 +2,124 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" x:Name="DeviceDetailPage"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" NavigationPage.HasNavigationBar="True"
              xmlns:control="clr-namespace:ProgressRingControl.Forms.Plugin;assembly=ProgressRing.Forms.Plugin"
-             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions" 
+             xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
+             xmlns:materialframe="http://sharpnado.com" xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="ControlZone.Views.DeviceViews.DeviceDetail">
     <NavigationPage.TitleView>
-        <Grid>
+        <Grid CompressedLayout.IsHeadless="True">
             <Label x:Name="DeviceTypeLabel" HorizontalOptions="CenterAndExpand" 
                    FontSize="25" FontAttributes="Bold"
                    Margin="0,0,65,0" BindingContext="{x:Reference DeviceDetailPage}"
                    Text="{x:Binding Device.DeviceType, Converter={StaticResource DeviceTypeConverter}}" TextColor="White"/>
             <Switch x:Name="PowerStatusSwitch" OnColor="#add638" ThumbColor="#fc794f" BindingContext="{x:Reference DeviceDetailPage}"
-                    HorizontalOptions="End" VerticalOptions="Center" IsToggled="{x:Binding Device.PowerStatus}"/>
+                    HorizontalOptions="End" VerticalOptions="Center" IsToggled="{x:Binding Device.PowerStatus, Mode=TwoWay}"/>
         </Grid>
     </NavigationPage.TitleView>
     <ContentPage.Content>
-        <ScrollView>
-            <Grid RowDefinitions="200,*">
-                <StackLayout Margin="30,0,0,0" VerticalOptions="Center">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="CPU: "/>
-                        <Label Text="70%"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="GPU: "/>
-                        <Label Text="40%"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Ram: "/>
-                        <Label Text="80%"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Memory: "/>
-                        <Label Text="22%"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Temp: "/>
-                        <Label Text="62°C"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Network: "/>
-                        <Label Text="4gb/s"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Device(s): "/>
-                        <Label Text="3"/>
-                    </StackLayout>
-                </StackLayout>
-                <Grid VerticalOptions="Start" HorizontalOptions="End" Margin="5"
-                      WidthRequest="180" HeightRequest="180">
-                    <control:ProgressRing x:Name="ProgressRingDevice" RingThickness="15" RingBaseColor="Gray" 
-                                          AnimationLength="2000" VerticalOptions="Center" HorizontalOptions="Center"
-                                          BindingContext="{x:Reference DeviceDetailPage}"
-                                          RingProgressColor="{x:Binding Device.Color}" AnimatedProgress="{x:Binding Device.OverallProcess}"/>
-                    <Image x:Name="DeviceLogo" BackgroundColor="Transparent"
-                         VerticalOptions="Center" HorizontalOptions="Center"
-                         WidthRequest="160" HeightRequest="160"
-                         sharedTransitions:Transition.Name="shareitemTransistion"
-                         sharedTransitions:Transition.Group="{x:Binding Id}"/>
+        <ScrollView Scrolled="ScrollView_Scrolled">
+            <Grid RowDefinitions="200, 200, 200, 200, *" CompressedLayout.IsHeadless="True">
+                <BoxView x:Name="bdGradient" Grid.Row="0" Scale="4" Grid.RowSpan="4" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Margin="0"/>
+                <materialframe:MaterialFrame MaterialBlurStyle="Light" MaterialTheme="AcrylicBlur" Padding="10"
+                                             Grid.Row="0" Margin="5,5,5,0" HorizontalOptions="FillAndExpand"
+                                             >
+                    <Grid>
+                        <StackLayout Margin="5,0,0,0" VerticalOptions="Center" CompressedLayout.IsHeadless="True">
+                            <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
+                                <Label Text="CPU: " TextColor="White"/>
+                                <Label Text="70%" TextColor="White"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
+                                <Label Text="GPU: " TextColor="White"/>
+                                <Label Text="40%" TextColor="White"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
+                                <Label Text="Ram: " TextColor="White"/>
+                                <Label Text="80%" TextColor="White"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
+                                <Label Text="Memory: " TextColor="White"/>
+                                <Label Text="22%" TextColor="White"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
+                                <Label Text="Temp: " TextColor="White"/>
+                                <Label Text="62°C" TextColor="White"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
+                                <Label Text="Network: " TextColor="White"/>
+                                <Label Text="4gb/s" TextColor="White"/>
+                            </StackLayout>
+                            <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
+                                <Label Text="Device(s): " TextColor="White"/>
+                                <Label Text="3" TextColor="White"/>
+                            </StackLayout>
+                        </StackLayout>
+                        <Grid VerticalOptions="Start" HorizontalOptions="End" Margin="5"
+                              WidthRequest="180" HeightRequest="180">
+                            <control:ProgressRing x:Name="ProgressRingDevice" RingThickness="15" RingBaseColor="Gray" 
+                                              AnimationLength="2000" VerticalOptions="Center" HorizontalOptions="Center"
+                                              BindingContext="{x:Reference DeviceDetailPage}"
+                                              RingProgressColor="{x:Binding Device.Color}" AnimatedProgress="{x:Binding Device.OverallProcess}"/>
+                            <Image x:Name="DeviceLogo" BackgroundColor="Transparent"
+                             VerticalOptions="Center" HorizontalOptions="Center"
+                             WidthRequest="145" HeightRequest="145"
+                             sharedTransitions:Transition.Name="shareitemTransistion"
+                             sharedTransitions:Transition.Group="{x:Binding Id}"/>
+                        </Grid>
+                    </Grid>
+                </materialframe:MaterialFrame>
+                <Grid ColumnDefinitions="*, *" Grid.Row="1" Margin="5,0,5,0">
+                    <materialframe:MaterialFrame x:Name="SecondFirstRowCell" MaterialTheme="AcrylicBlur" 
+                                                 MaterialBlurStyle="Light" TranslationY="500"
+                                                 Padding="15">
+                        <Grid>
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="Center" CompressedLayout.IsHeadless="True">
+                                <Image Source="Assets/Devices/Cooler.png" WidthRequest="100" HeightRequest="100"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label Text="QUẠT TẢN NHIỆT" FontAttributes="Bold" TextColor="White"
+                                       VerticalOptions="Center" HorizontalOptions="Center"/>
+                                <Label Text="70 RPM" FontAttributes="Bold" FontSize="20"
+                                       HorizontalOptions="Center" TextColor="White"/>
+                            </StackLayout>
+                            <Ellipse WidthRequest="10" HeightRequest="10" Fill="LightGreen"
+                                     VerticalOptions="Start" HorizontalOptions="End"/>
+                        </Grid>
+                    </materialframe:MaterialFrame>
+                    <materialframe:MaterialFrame x:Name="SecondSecondRowCell"
+                                                 Grid.Column="1" MaterialTheme="AcrylicBlur" 
+                                                 MaterialBlurStyle="Light" TranslationY="500"
+                                                 Padding="15">
+                        <Grid>
+                            <StackLayout VerticalOptions="Center" HorizontalOptions="Center" CompressedLayout.IsHeadless="True">
+                                <Image Source="Assets/Devices/Camera.png" WidthRequest="100" HeightRequest="100"
+                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label Text="CAMERA" FontAttributes="Bold" TextColor="White"
+                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Label Text="15 Người" FontAttributes="Bold" FontSize="20"
+                                       HorizontalOptions="Center" TextColor="White"/>
+                            </StackLayout>
+                            <Ellipse WidthRequest="10" HeightRequest="10" Fill="LightGreen" 
+                                     VerticalOptions="Start" HorizontalOptions="End"/>
+                        </Grid>
+                    </materialframe:MaterialFrame>
+                </Grid>
+                <materialframe:MaterialFrame x:Name="ThirdRowCell"
+                                             Grid.Row="2" Margin="5,0,5,0" Padding="0" TranslationY="500"
+                                             MaterialTheme="AcrylicBlur" MaterialBlurStyle="Light">
+                    <microcharts:ChartView x:Name="PowerUsageChart" HeightRequest="200"/>
+                </materialframe:MaterialFrame>
+                <Grid x:Name="FourthRowCell" Grid.Row="3" ColumnDefinitions="0.25*, 0.25*, 0.5*" RowDefinitions="*, *" 
+                      TranslationY="500" Margin="5,0,5,0">
+                    <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" MaterialBlurStyle="Light"
+                                                 Grid.Row="0" Grid.Column="0"/>
+                    <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" MaterialBlurStyle="Light"
+                                                 Grid.Row="0" Grid.Column="1"/>
+                    <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" MaterialBlurStyle="Light"
+                                                 Grid.Row="1" Grid.Column="0"/>
+                    <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" MaterialBlurStyle="Light"
+                                                 Grid.Row="1" Grid.Column="1"/>
+                    <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" MaterialBlurStyle="Light"
+                                                 Grid.RowSpan="2" Grid.Column="2"/>
                 </Grid>
             </Grid>
         </ScrollView>

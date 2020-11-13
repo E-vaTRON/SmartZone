@@ -1,6 +1,4 @@
-﻿using ControlZone.Components.DeviceViewCell;
-using ControlZone.Model;
-using ControlZone.ViewModels.ViewModelPages.ViewModelDeviceViews;
+﻿using ControlZone.Model;
 using Plugin.SharedTransitions;
 using System;
 using System.Diagnostics;
@@ -17,13 +15,12 @@ namespace ControlZone.Views.DeviceViews
         {
             InitializeComponent();
             Task.Run(AnimateBackground);
-            BindingContext = new ViewModelDeviceList();
         }
 
         protected override async void OnAppearing()
         {
-            await AddDeivceButton.TranslateTo(100, 0, 0);
-            await AddDeivceButton.TranslateTo(0, 0, 500, Easing.SpringIn);
+            await TopLabel1.TranslateTo(0, 0, 1300, Easing.SpringOut);
+            await TopLabel2.TranslateTo(0, 0, 500, Easing.SpringOut);
         }
 
         private async void DeviceLogo_Clicked(object sender, System.EventArgs e)

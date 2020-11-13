@@ -9,6 +9,8 @@ namespace ControlZone.Model
         public string IconImageSource { get; set; } = String.Empty;
         public string Model { get; set; } = String.Empty;
         public string Color { get; set; } = String.Empty;
+        public string GradientColor1 { get; set; } = String.Empty;
+        public string GradientColor2 { get; set; } = String.Empty;
         public DateTime ManufactorDate { get; set; }
         public double Weight { get; set; }
         public float OverallProcess { get; set; }

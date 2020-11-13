@@ -11,9 +11,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Back.png" />
+    <None Remove="Assets\Devices\Camera.png" />
+    <None Remove="Assets\Devices\Cooler.png" />
     <None Remove="Assets\Devices\Devices.png" />
     <None Remove="Assets\Employee.png" />
     <None Remove="Assets\Plus.png" />
+    <None Remove="Assets\Wallpapers\GreenDust.jpg" />
     <None Remove="CC1.png" />
     <None Remove="Light.png" />
     <None Remove="Resources\Fonts\Biome-W04-Bold.otf" />
@@ -31,25 +35,33 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="JimBobBennett.AnimatedProgress" Version="1.1.0" />
+    <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
     <PackageReference Include="MQTTnet" Version="3.0.13" />
-    <PackageReference Include="Resizetizer.NT" Version="0.2.0-preview2" />
+    <PackageReference Include="Resizetizer.NT" Version="0.2.0" />
     <PackageReference Include="Sharpnado.MaterialFrame" Version="1.1.3" />
+    <PackageReference Include="SkiaSharp" Version="2.80.2" />
     <PackageReference Include="Xam.Plugins.Forms.ProgressRing" Version="0.1.2" />
+    <PackageReference Include="Xamarin.CommunityToolkit" Version="1.0.0-pre4" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.11.982" />
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.11.982" />
-    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1534" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.6.0-pre2" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1560" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.6.0-pre3" />
     <PackageReference Include="Xamarin.Plugin.SharedTransitions" Version="2.4.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <SharedImage Include="Assets\Devices\Camera.png" BaseSize="221,221" />
     <SharedImage Include="Assets\Devices\CC1.png" BaseSize="221,221" />
+    <SharedImage Include="Assets\Devices\Cooler.png" BaseSize="221,221" />
     <SharedImage Include="Assets\Devices\Devices.png" BaseSize="221,221" />
     <SharedImage Include="Assets\Devices\Light.png" BaseSize="221,221" />
     <SharedImage Include="Assets\Devices\TC1.png" BaseSize="221,221" />
     <SharedImage Include="Assets\Employee.png" BaseSize="221,221" />
     <SharedImage Include="Assets\Plus.png" BaseSize="221,221" />
+    <SharedImage Include="Assets\Back.png" BaseSize="221,221" />
+    <SharedImage Include="Assets\Wallpapers\GreenDust.jpg" BaseSize="1000, 500" />
   </ItemGroup>
 
   <ItemGroup>
@@ -71,5 +83,9 @@
     <EmbeddedResource Update="Views\TaskViews\TaskList.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Helpers\" />
   </ItemGroup>
 </Project>

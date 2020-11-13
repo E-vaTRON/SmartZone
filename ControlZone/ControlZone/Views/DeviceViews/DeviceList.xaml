@@ -3,12 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" Visual="Material" NavigationPage.HasNavigationBar="False"
              xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions" 
              xmlns:data="clr-namespace:ControlZone.Model" 
-             xmlns:materialframe="http://sharpnado.com"
-             xmlns:CustomControl="clr-namespace:ControlZone.Components.DeviceViewCell"
+             xmlns:materialframe="http://sharpnado.com" 
+             xmlns:jbb="clr-namespace:JimBobBennett.AnimatedProgress;assembly=JimBobBennett.AnimatedProgress"
+             xmlns:local="clr-namespace:ControlZone.ViewModels.ViewModelPages.ViewModelDeviceViews"
              x:Class="ControlZone.Views.DeviceViews.DeviceList">
+    <ContentPage.BindingContext>
+        <local:ViewModelDeviceList x:Name="MainPageVM" x:FieldModifier="public"/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid RowDefinitions="55,*" BackgroundColor="#f8bc00">
-            <BoxView x:Name="bdGradient" Grid.Row="0" Scale="4" Grid.RowSpan="2" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Margin="0">
+        <Grid RowDefinitions="120,*" CompressedLayout.IsHeadless="True">
+            <BoxView x:Name="bdGradient" Grid.Row="0" Grid.RowSpan="2" Scale="4" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Margin="0">
                 <BoxView.Background>
                     <LinearGradientBrush>
                         <GradientStop Color="#eea849" Offset="0.5" />
@@ -16,52 +20,71 @@
                     </LinearGradientBrush>
                 </BoxView.Background>
             </BoxView>
-            <materialframe:MaterialFrame x:Name="TopBar" MaterialTheme="AcrylicBlur" MaterialBlurStyle="ExtraLight" Padding="0"
-                                         HasShadow="True">
-                <Grid>
-                    <ImageButton x:Name="LogoButton" Source="Devices.png" BackgroundColor="Transparent" WidthRequest="50" HeightRequest="50"
-                         sharedTransitions:Transition.Name="shareitemTransistion" VerticalOptions="Start" HorizontalOptions="Center" CornerRadius="30"
-                         sharedTransitions:Transition.Group="{x:Binding toolName}" Margin="0,5,0,5"/>
-                    <ImageButton x:Name="AddDeivceButton" HorizontalOptions="End" Source="Assets/Plus.png" WidthRequest="40" HeightRequest="40"
-                             BackgroundColor="Transparent" Margin="0,5,15,0"/>
-                </Grid>
-            </materialframe:MaterialFrame>
-            <RefreshView x:Name="DeviceRefreshView" Grid.Row="1">
-                <CollectionView x:Name="DeviceCollectionView" BackgroundColor="Transparent" SelectionMode="None"
-                                VerticalOptions="Start" ItemsSource="{x:Binding Devices, Mode=TwoWay}">
+            <CollectionView x:Name="DeviceCollectionView" Grid.Row="0" Grid.RowSpan="2"
+                            BackgroundColor="Transparent" SelectionMode="None"
+                            VerticalOptions="FillAndExpand" ItemsSource="{x:Binding Devices, Mode=TwoWay}"
+                            ItemsUpdatingScrollMode="KeepLastItemInView" VerticalScrollBarVisibility="Never">
                     <CollectionView.ItemsLayout>
                         <GridItemsLayout Span="2" Orientation="Vertical"/>
                     </CollectionView.ItemsLayout>
+                    <CollectionView.Header>
+                        <BoxView BackgroundColor="Transparent" HeightRequest="120" CompressedLayout.IsHeadless="True"/>
+                    </CollectionView.Header>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="data:DeviceBase">
-                            <Grid Padding="5">
+                            <Grid Padding="5" CompressedLayout.IsHeadless="True">
                                 <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" Padding="0"
-                                     HeightRequest="220" HasShadow="True" AcrylicGlowColor="{x:Binding Color}">
+                                         HeightRequest="220" HasShadow="True" AcrylicGlowColor="{x:Binding Color}">
                                     <StackLayout Padding="5,15,5,5">
                                         <ImageButton x:Name="DeviceLogo" Source="{x:Binding IconImageSource}" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" 
-                                                 BackgroundColor="Transparent" Clicked="DeviceLogo_Clicked" CommandParameter="{x:Binding .}"
-                                                 sharedTransitions:Transition.Name="shareitemTransistion" sharedTransitions:Transition.Group="{x:Binding Id}"/>
+                                                     BackgroundColor="Transparent" Clicked="DeviceLogo_Clicked" CommandParameter="{x:Binding .}"
+                                                     sharedTransitions:Transition.Name="shareitemTransistion" sharedTransitions:Transition.Group="{x:Binding Id}"/>
                                         <Label Text="{x:Binding Model}" FontAttributes="Bold"  FontSize="Default" HorizontalOptions="Center" TextColor="{x:Binding Color}"/>
                                         <Label x:Name="DeviceType" Text="{x:Binding DeviceType, Converter={StaticResource DeviceTypeConverter}}" 
-                                           FontSize="Small" HorizontalOptions="Center" />
-                                        <Grid HorizontalOptions="FillAndExpand">
+                                               FontSize="Small" HorizontalOptions="Center" />
+                                        <Grid HorizontalOptions="FillAndExpand" CompressedLayout.IsHeadless="True">
                                             <Label Text="{x:Binding OverallProcess,Converter={StaticResource DeviceTypeProcessConverter},ConverterParameter={x:Reference DeviceType}}" 
-                                               FontSize="12" HorizontalOptions="Start" VerticalOptions="Center" />
+                                                   FontSize="12" HorizontalOptions="Start" VerticalOptions="Center" />
                                             <Switch IsToggled="{x:Binding PowerStatus, Mode=TwoWay}" ThumbColor="{x:Binding Color}" OnColor="#add638" HorizontalOptions="End" VerticalOptions="Center"/>
                                         </Grid>
-                                        <ProgressBar Progress="{x:Binding OverallProcess, Mode=TwoWay}" ProgressColor="{x:Binding Color}"/>
+                                        <ProgressBar ProgressColor="{x:Binding Color}"
+                                                     jbb:AttachedProperties.AnimatedProgress="{x:Binding OverallProcess, Mode=TwoWay}"
+                                                     jbb:AttachedProperties.AnimatedProgressAnimationTime="3000"
+                                                     jbb:AttachedProperties.AnimatedProgressEasing="Linear"/>
                                     </StackLayout>
                                 </materialframe:MaterialFrame>
                                 <BoxView BackgroundColor="{x:Binding Color}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="2"/>
                             </Grid>
                             <!--<CustomControl:DeviceViewCell DeviceId="{x:Binding Id}" DeviceType="{x:Binding DeviceType}" DeviceColor="{x:Binding Color}"
-                                                          IconImageSource="{x:Binding IconImageSource}" PowerStatus="{x:Binding PowerStatus}"
-                                                          Percentage="{x:Binding OverallProcess}" OverallProcess="{x:Binding OverallProcess}"
-                                                          DeviceClick="NavigateToDeviceDetail"/>-->
+                                                              IconImageSource="{x:Binding IconImageSource}" PowerStatus="{x:Binding PowerStatus}"
+                                                              Percentage="{x:Binding OverallProcess}" OverallProcess="{x:Binding OverallProcess}"
+                                                              DeviceClick="NavigateToDeviceDetail"/>-->
                         </DataTemplate>
                     </CollectionView.ItemTemplate>
+                    <CollectionView.Footer>
+                        <Grid Padding="5">
+                            <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" Padding="0" WidthRequest="60" HeightRequest="60"
+                                                         VerticalOptions="Center" HorizontalOptions="Center">
+                                <ImageButton Source="Plus.png" WidthRequest="60" HeightRequest="60" Padding="5"
+                                         BackgroundColor="Transparent" Margin="5"/>
+                            </materialframe:MaterialFrame>
+                            <BoxView BackgroundColor="#e37a46" HorizontalOptions="Center" VerticalOptions="Start" 
+                                     HeightRequest="2" WidthRequest="60"/>
+                        </Grid>
+                    </CollectionView.Footer>
                 </CollectionView>
-            </RefreshView>
+                <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" Padding="0"
+                                     HeightRequest="220" HasShadow="True">
+                <Grid ColumnDefinitions="1.5*,*">
+                    <StackLayout VerticalOptions="Center" Margin="10" CompressedLayout.IsHeadless="True">
+                        <Label x:Name="TopLabel1" TranslationX="-300" Text="DANH SÁCH" FontSize="30" FontAttributes="Bold"/>
+                        <Label x:Name="TopLabel2" TranslationX="-300" Text="THIẾT BỊ: 3" FontSize="30" FontAttributes="Bold"/>
+                    </StackLayout>
+                    <ImageButton x:Name="LogoButton" Source="Devices.png" BackgroundColor="Transparent" WidthRequest="200" HeightRequest="200"
+                         sharedTransitions:Transition.Name="shareitemTransistion" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="30"
+                         sharedTransitions:Transition.Group="{x:Binding toolName}" Margin="10" Grid.Column="1"/>
+                </Grid>
+            </materialframe:MaterialFrame>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
