@@ -4,7 +4,7 @@
              xmlns:sharedTransitions="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions"
              xmlns:materialframe="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
              x:Class="ControlZone.MainPage">
-    <ScrollView>
+    <ScrollView VerticalScrollBarVisibility="Never">
         <Grid RowDefinitions="180, Auto, Auto, 50, *" CompressedLayout.IsHeadless="True">
             <Frame Grid.Row="0" HeightRequest="180" HasShadow="True" HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Padding="0" Margin="0">
                 <Grid x:Name="GradientTop" Margin="0" Padding="0" RowDefinitions="0.2*, Auto, 0.75*">

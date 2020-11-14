@@ -9,9 +9,9 @@
     <NavigationPage.TitleView>
         <Grid CompressedLayout.IsHeadless="True">
             <Label x:Name="DeviceTypeLabel" HorizontalOptions="CenterAndExpand" 
-                   FontSize="25" FontAttributes="Bold"
+                   FontSize="20" FontAttributes="Bold" VerticalOptions="Center"
                    Margin="0,0,65,0" BindingContext="{x:Reference DeviceDetailPage}"
-                   Text="{x:Binding Device.DeviceType, Converter={StaticResource DeviceTypeConverter}}" TextColor="White"/>
+                   Text="{x:Binding Device.DeviceType, Converter={StaticResource DeviceTypeConverter}}" TextColor="{OnPlatform Android=White, iOS=Black}"/>
             <Switch x:Name="PowerStatusSwitch" OnColor="#add638" ThumbColor="#fc794f" BindingContext="{x:Reference DeviceDetailPage}"
                     HorizontalOptions="End" VerticalOptions="Center" IsToggled="{x:Binding Device.PowerStatus, Mode=TwoWay}"/>
         </Grid>
@@ -21,36 +21,33 @@
             <Grid RowDefinitions="200, 200, 200, 200, *" CompressedLayout.IsHeadless="True">
                 <BoxView x:Name="bdGradient" Grid.Row="0" Scale="4" Grid.RowSpan="4" VerticalOptions="Fill" HorizontalOptions="FillAndExpand" Margin="0"/>
                 <materialframe:MaterialFrame MaterialBlurStyle="Light" MaterialTheme="AcrylicBlur" Padding="10"
-                                             Grid.Row="0" Margin="5,5,5,0" HorizontalOptions="FillAndExpand">
+                                             Grid.Row="0" Margin="5,5,5,0" HorizontalOptions="FillAndExpand"
+                                             CornerRadius="0">
                     <Grid>
                         <StackLayout Margin="5,0,0,0" VerticalOptions="Center" CompressedLayout.IsHeadless="True">
                             <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
-                                <Label Text="CPU: " TextColor="White"/>
-                                <Label Text="70%" TextColor="White"/>
+                                <Label Text="CPU: " TextColor="{OnPlatform Android=White, iOS=Black}"/>
+                                <Label Text="70%" TextColor="{OnPlatform Android=White, iOS=Black}"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
-                                <Label Text="GPU: " TextColor="White"/>
-                                <Label Text="40%" TextColor="White"/>
+                                <Label Text="GPU: " TextColor="{OnPlatform Android=White, iOS=Black}"/>
+                                <Label Text="40%" TextColor="{OnPlatform Android=White, iOS=Black}"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
-                                <Label Text="Ram: " TextColor="White"/>
-                                <Label Text="80%" TextColor="White"/>
+                                <Label Text="Ram: " TextColor="{OnPlatform Android=White, iOS=Black}"/>
+                                <Label Text="80%" TextColor="{OnPlatform Android=White, iOS=Black}"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
-                                <Label Text="Memory: " TextColor="White"/>
-                                <Label Text="22%" TextColor="White"/>
+                                <Label Text="Temp: " TextColor="{OnPlatform Android=White, iOS=Black}"/>
+                                <Label Text="62°C" TextColor="{OnPlatform Android=White, iOS=Black}"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
-                                <Label Text="Temp: " TextColor="White"/>
-                                <Label Text="62°C" TextColor="White"/>
+                                <Label Text="Network: " TextColor="{OnPlatform Android=White, iOS=Black}"/>
+                                <Label Text="4gb/s" TextColor="{OnPlatform Android=White, iOS=Black}"/>
                             </StackLayout>
                             <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
-                                <Label Text="Network: " TextColor="White"/>
-                                <Label Text="4gb/s" TextColor="White"/>
-                            </StackLayout>
-                            <StackLayout Orientation="Horizontal" CompressedLayout.IsHeadless="True">
-                                <Label Text="Device(s): " TextColor="White"/>
-                                <Label Text="3" TextColor="White"/>
+                                <Label Text="Device(s): " TextColor="{OnPlatform Android=White, iOS=Black}"/>
+                                <Label Text="3" TextColor="{OnPlatform Android=White, iOS=Black}"/>
                             </StackLayout>
                         </StackLayout>
                         <Grid VerticalOptions="Start" HorizontalOptions="End" Margin="5"
@@ -71,15 +68,15 @@
                 <Grid ColumnDefinitions="*, *" Grid.Row="1" Margin="5,0,5,0">
                     <materialframe:MaterialFrame x:Name="SecondFirstRowCell" MaterialTheme="AcrylicBlur" 
                                                  MaterialBlurStyle="Light" TranslationY="500"
-                                                 Padding="15">
+                                                 Padding="15" CornerRadius="0">
                         <Grid>
                             <StackLayout VerticalOptions="Center" HorizontalOptions="Center" CompressedLayout.IsHeadless="True">
                                 <Image Source="Cooler.png" WidthRequest="100" HeightRequest="100"
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Label Text="QUẠT TẢN NHIỆT" FontAttributes="Bold" TextColor="White"
+                                <Label Text="QUẠT TẢN NHIỆT" FontAttributes="Bold" TextColor="{OnPlatform Android=White, iOS=Black}"
                                        VerticalOptions="Center" HorizontalOptions="Center"/>
                                 <Label Text="70 RPM" FontAttributes="Bold" FontSize="20"
-                                       HorizontalOptions="Center" TextColor="White"/>
+                                       HorizontalOptions="Center" TextColor="{OnPlatform Android=White, iOS=Black}"/>
                             </StackLayout>
                             <Ellipse WidthRequest="10" HeightRequest="10" Fill="LightGreen"
                                      VerticalOptions="Start" HorizontalOptions="End"/>
@@ -88,22 +85,22 @@
                     <materialframe:MaterialFrame x:Name="SecondSecondRowCell"
                                                  Grid.Column="1" MaterialTheme="AcrylicBlur" 
                                                  MaterialBlurStyle="Light" TranslationY="500"
-                                                 Padding="15">
+                                                 Padding="15" CornerRadius="0">
                         <Grid>
                             <StackLayout VerticalOptions="Center" HorizontalOptions="Center" CompressedLayout.IsHeadless="True">
                                 <Image Source="Camera.png" WidthRequest="100" HeightRequest="100"
                                    HorizontalOptions="Center" VerticalOptions="Center"/>
-                                <Label Text="CAMERA" FontAttributes="Bold" TextColor="White"
+                                <Label Text="CAMERA" FontAttributes="Bold" TextColor="{OnPlatform Android=White, iOS=Black}"
                                        HorizontalOptions="Center" VerticalOptions="Center"/>
                                 <Label Text="15 Người" FontAttributes="Bold" FontSize="20"
-                                       HorizontalOptions="Center" TextColor="White"/>
+                                       HorizontalOptions="Center" TextColor="{OnPlatform Android=White, iOS=Black}"/>
                             </StackLayout>
                             <Ellipse WidthRequest="10" HeightRequest="10" Fill="LightGreen" 
                                      VerticalOptions="Start" HorizontalOptions="End"/>
                         </Grid>
                     </materialframe:MaterialFrame>
                 </Grid>
-                <materialframe:MaterialFrame x:Name="ThirdRowCell"
+                <materialframe:MaterialFrame x:Name="ThirdRowCell" CornerRadius="0"
                                              Grid.Row="2" Margin="5,0,5,0" Padding="0" TranslationY="500"
                                              MaterialTheme="AcrylicBlur" MaterialBlurStyle="Light">
                     <microcharts:ChartView x:Name="PowerUsageChart" HeightRequest="200"/>
@@ -111,15 +108,15 @@
                 <Grid x:Name="FourthRowCell" Grid.Row="3" ColumnDefinitions="0.25*, 0.25*, 0.5*" RowDefinitions="*, *" 
                       TranslationY="500" Margin="5,0,5,0">
                     <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" MaterialBlurStyle="Light"
-                                                 Grid.Row="0" Grid.Column="0"/>
+                                                 Grid.Row="0" Grid.Column="0" CornerRadius="0"/>
                     <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" MaterialBlurStyle="Light"
-                                                 Grid.Row="0" Grid.Column="1"/>
+                                                 Grid.Row="0" Grid.Column="1" CornerRadius="0"/>
                     <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" MaterialBlurStyle="Light"
-                                                 Grid.Row="1" Grid.Column="0"/>
+                                                 Grid.Row="1" Grid.Column="0" CornerRadius="0"/>
                     <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" MaterialBlurStyle="Light"
-                                                 Grid.Row="1" Grid.Column="1"/>
+                                                 Grid.Row="1" Grid.Column="1" CornerRadius="0"/>
                     <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" MaterialBlurStyle="Light"
-                                                 Grid.RowSpan="2" Grid.Column="2"/>
+                                                 Grid.RowSpan="2" Grid.Column="2" CornerRadius="0"/>
                 </Grid>
             </Grid>
         </ScrollView>

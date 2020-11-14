@@ -80,7 +80,7 @@
                       Margin="{OnPlatform Android='0', iOS='0,25,0,0'}">
                     <StackLayout VerticalOptions="Center" Margin="10" CompressedLayout.IsHeadless="True">
                         <Label x:Name="TopLabel1" TranslationX="-300" Text="DANH SÁCH" FontSize="30" FontAttributes="Bold"/>
-                        <Label x:Name="TopLabel2" TranslationX="-300" Text="THIẾT BỊ: 3" FontSize="30" FontAttributes="Bold"/>
+                        <Label x:Name="TopLabel2" TranslationX="-300" Text="THIẾT BỊ: 4" FontSize="30" FontAttributes="Bold"/>
                     </StackLayout>
                     <ImageButton x:Name="LogoButton" Source="Devices.png" BackgroundColor="Transparent" WidthRequest="200" HeightRequest="200"
                          sharedTransitions:Transition.Name="shareitemTransistion" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="30"
