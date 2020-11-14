@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ControlZone.Model.TTDevices
 {
-    public class TLight
+    public class TLight : DeviceBase
     {
         public float Brightness { get; set; }
         public string LightColor { get; set; }

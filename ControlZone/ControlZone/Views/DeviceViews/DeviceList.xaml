@@ -33,13 +33,13 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="data:DeviceBase">
                             <Grid Padding="5" CompressedLayout.IsHeadless="True">
-                                <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" Padding="0"
-                                         HeightRequest="220" HasShadow="True" AcrylicGlowColor="{x:Binding Color}">
+                                <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" Padding="0" CornerRadius="0"
+                                         HeightRequest="240" HasShadow="True" AcrylicGlowColor="{x:Binding Color}">
                                     <StackLayout Padding="5,15,5,5">
                                         <ImageButton x:Name="DeviceLogo" Source="{x:Binding IconImageSource}" WidthRequest="100" HeightRequest="100" HorizontalOptions="Center" 
                                                      BackgroundColor="Transparent" Clicked="DeviceLogo_Clicked" CommandParameter="{x:Binding .}"
                                                      sharedTransitions:Transition.Name="shareitemTransistion" sharedTransitions:Transition.Group="{x:Binding Id}"/>
-                                        <Label Text="{x:Binding Model}" FontAttributes="Bold"  FontSize="Default" HorizontalOptions="Center" TextColor="{x:Binding Color}"/>
+                                        <Label Text="{x:Binding Model}" FontAttributes="Bold"  FontSize="Default" HorizontalOptions="Center" HorizontalTextAlignment="Center" TextColor="{x:Binding Color}"/>
                                         <Label x:Name="DeviceType" Text="{x:Binding DeviceType, Converter={StaticResource DeviceTypeConverter}}" 
                                                FontSize="Small" HorizontalOptions="Center" />
                                         <Grid HorizontalOptions="FillAndExpand" CompressedLayout.IsHeadless="True">
@@ -53,7 +53,7 @@
                                                      jbb:AttachedProperties.AnimatedProgressEasing="Linear"/>
                                     </StackLayout>
                                 </materialframe:MaterialFrame>
-                                <BoxView BackgroundColor="{x:Binding Color}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="2"/>
+                                <BoxView BackgroundColor="{x:Binding Color}" HorizontalOptions="FillAndExpand" VerticalOptions="Start" HeightRequest="3"/>
                             </Grid>
                             <!--<CustomControl:DeviceViewCell DeviceId="{x:Binding Id}" DeviceType="{x:Binding DeviceType}" DeviceColor="{x:Binding Color}"
                                                               IconImageSource="{x:Binding IconImageSource}" PowerStatus="{x:Binding PowerStatus}"
@@ -74,7 +74,8 @@
                     </CollectionView.Footer>
                 </CollectionView>
                 <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" Padding="0"
-                                     HeightRequest="220" HasShadow="True">
+                                             HeightRequest="220" HasShadow="True"
+                                             CornerRadius="0">
                 <Grid ColumnDefinitions="1.5*,*">
                     <StackLayout VerticalOptions="Center" Margin="10" CompressedLayout.IsHeadless="True">
                         <Label x:Name="TopLabel1" TranslationX="-300" Text="DANH SÁCH" FontSize="30" FontAttributes="Bold"/>
