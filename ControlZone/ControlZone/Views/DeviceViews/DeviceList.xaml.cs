@@ -16,7 +16,7 @@ namespace ControlZone.Views.DeviceViews
             InitializeComponent();
             if (Device.RuntimePlatform == Device.iOS)
             {
-                NavigationPage.SetHasNavigationBar(this, true);
+                //NavigationPage.SetHasNavigationBar(this, true);
             }
             Task.Run(AnimateBackground);
         }

@@ -11,7 +11,7 @@
         <local:ViewModelDeviceList x:Name="MainPageVM" x:FieldModifier="public"/>
     </ContentPage.BindingContext>
     <ContentPage.Content>
-        <Grid RowDefinitions="120,*" CompressedLayout.IsHeadless="True">
+        <Grid RowDefinitions="{OnPlatform Android='120, *', iOS='150, *'}" CompressedLayout.IsHeadless="True">
             <BoxView x:Name="bdGradient" Grid.Row="0" Grid.RowSpan="2" Scale="4" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" Margin="0">
                 <BoxView.Background>
                     <LinearGradientBrush>
@@ -28,7 +28,7 @@
                         <GridItemsLayout Span="2" Orientation="Vertical"/>
                     </CollectionView.ItemsLayout>
                     <CollectionView.Header>
-                        <BoxView BackgroundColor="Transparent" HeightRequest="120" CompressedLayout.IsHeadless="True"/>
+                        <BoxView BackgroundColor="Transparent" HeightRequest="{OnPlatform Android='120', iOS='155'}" CompressedLayout.IsHeadless="True"/>
                     </CollectionView.Header>
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="data:DeviceBase">
@@ -74,9 +74,10 @@
                     </CollectionView.Footer>
                 </CollectionView>
                 <materialframe:MaterialFrame MaterialTheme="AcrylicBlur" Padding="0"
-                                             HeightRequest="220" HasShadow="True"
+                                             HeightRequest="240" HasShadow="True"
                                              CornerRadius="0">
-                <Grid ColumnDefinitions="1.5*,*">
+                <Grid ColumnDefinitions="1.5*,*"
+                      Margin="{OnPlatform Android='0', iOS='0,25,0,0'}">
                     <StackLayout VerticalOptions="Center" Margin="10" CompressedLayout.IsHeadless="True">
                         <Label x:Name="TopLabel1" TranslationX="-300" Text="DANH SÁCH" FontSize="30" FontAttributes="Bold"/>
                         <Label x:Name="TopLabel2" TranslationX="-300" Text="THIẾT BỊ: 3" FontSize="30" FontAttributes="Bold"/>

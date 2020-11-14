@@ -14,7 +14,7 @@ namespace ControlZone
             InitializeComponent();
             if (Device.RuntimePlatform == Device.iOS)
             {
-                NavigationPage.SetHasNavigationBar(this, true);
+                //NavigationPage.SetHasNavigationBar(this, true);
                 bdGradient.Scale = 1;
             }
             else if(Device.RuntimePlatform == Device.Android)
