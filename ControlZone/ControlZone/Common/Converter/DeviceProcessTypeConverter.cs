@@ -15,7 +15,7 @@ namespace ControlZone.Common.Converter
             Label deviceType = (object)parameter as Label;
             if(deviceType.Text == "Trung tâm điều khiển")
             {
-                overallProcess = "Xung nhịp CPU: " + floatvalue + "%";
+                overallProcess = "CPU: " + floatvalue + "%";
             }
             else if(deviceType.Text == "Thùng rác")
             {
