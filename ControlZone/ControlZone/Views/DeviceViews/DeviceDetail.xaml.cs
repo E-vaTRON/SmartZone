@@ -137,7 +137,7 @@ namespace ControlZone.Views.DeviceViews
         private async void ScrollView_Scrolled(object sender, ScrolledEventArgs e)
         {
             Debug.WriteLine($"ScrollX: {e.ScrollX}, ScrollY: {e.ScrollY}");
-            if(e.ScrollY > 90) await FourthRowCell.TranslateTo(0, 0, 700, Easing.CubicOut);
+            if(e.ScrollY > 10) await FourthRowCell.TranslateTo(0, 0, 700, Easing.CubicOut);
             else await FourthRowCell.TranslateTo(0, 500, 700, Easing.CubicIn);
         }
     }

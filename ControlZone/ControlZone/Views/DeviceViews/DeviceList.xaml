@@ -84,7 +84,7 @@
                     </StackLayout>
                     <ImageButton x:Name="LogoButton" Source="Devices.png" BackgroundColor="Transparent" WidthRequest="200" HeightRequest="200"
                          sharedTransitions:Transition.Name="shareitemTransistion" VerticalOptions="Center" HorizontalOptions="Center" CornerRadius="30"
-                         sharedTransitions:Transition.Group="{x:Binding toolName}" Margin="10" Grid.Column="1"/>
+                         sharedTransitions:Transition.Group="{x:Binding toolName}" Margin="15,20,0,15" Grid.Column="1" />
                 </Grid>
             </materialframe:MaterialFrame>
         </Grid>

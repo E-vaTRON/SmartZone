@@ -26,10 +26,7 @@ namespace ControlZone
         protected override async void OnAppearing()
         {
         }
-        private async void DeviceListClick(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new DeviceList());
-        }
+        private async void DeviceListClick(object sender, EventArgs e) => await Navigation.PushAsync(new DeviceList());
         private async void AnimateBackground()
         {
             Action<double> forward = input => bdGradient.AnchorY = input;

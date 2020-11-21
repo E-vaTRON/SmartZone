@@ -10,7 +10,7 @@
         <Grid CompressedLayout.IsHeadless="True">
             <Label x:Name="DeviceTypeLabel" HorizontalOptions="CenterAndExpand" 
                    FontSize="20" FontAttributes="Bold" VerticalOptions="Center"
-                   Margin="0,0,65,0" BindingContext="{x:Reference DeviceDetailPage}"
+                   Margin="{OnPlatform Android='0,0,65,0', iOS='0,0,35,0'}" BindingContext="{x:Reference DeviceDetailPage}"
                    Text="{x:Binding Device.DeviceType, Converter={StaticResource DeviceTypeConverter}}" TextColor="{OnPlatform Android=White, iOS=Black}"/>
             <Switch x:Name="PowerStatusSwitch" OnColor="#add638" ThumbColor="#fc794f" BindingContext="{x:Reference DeviceDetailPage}"
                     HorizontalOptions="End" VerticalOptions="Center" IsToggled="{x:Binding Device.PowerStatus, Mode=TwoWay}"/>
@@ -56,7 +56,8 @@
                                               AnimationLength="2000" VerticalOptions="Center" HorizontalOptions="Center"
                                               BindingContext="{x:Reference DeviceDetailPage}"
                                               RingProgressColor="{x:Binding Device.Color}" 
-                                              AnimatedProgress="{x:Binding Device.OverallProcess}"/>
+                                              AnimatedProgress="{x:Binding Device.OverallProcess}"
+                                              WidthRequest="165" HeightRequest="165"/>
                             <Image x:Name="DeviceLogo" BackgroundColor="Transparent"
                              VerticalOptions="Center" HorizontalOptions="Center"
                              WidthRequest="145" HeightRequest="145"

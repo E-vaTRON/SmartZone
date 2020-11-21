@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FFImageLoading.Forms.Platform;
 using Foundation;
+using ProgressRingControl.Forms.Plugin.iOS;
 using UIKit;
 
 namespace ControlZone.iOS
@@ -22,6 +23,7 @@ namespace ControlZone.iOS
         //
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
+            ProgressRingRenderer.Init();
             global::Xamarin.Forms.Forms.Init();
             CachedImageRenderer.Init();
             LoadApplication(new App());
